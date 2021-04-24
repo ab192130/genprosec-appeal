@@ -1,9 +1,10 @@
 import DashboardLayout from "../../layouts/dashboard";
+import Table from '../../app/system/ui/table';
 
 const Appeals = () => {
     return (
         <div>
-            [müraciətlər]
+           <Table/>
         </div>
     );
 };
