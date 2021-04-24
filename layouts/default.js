@@ -14,7 +14,7 @@ const DefaultLayout = (props) => {
                 <Link href="/submit">Yeni müraciət</Link>
             </header>
 
-            <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
+            <main className="flex flex-col items-center justify-center flex-1 px-20">
                 {props.children}
             </main>
 
