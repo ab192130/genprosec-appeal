@@ -6,7 +6,7 @@ const Navigation = () => {
         <nav className="max-w-7xl mx-auto bg-white rounded-b-3xl dark:bg-gray-800 shadow-xl py-4 ">
             <div className="px-8">
                 <div className="flex items-center justify-between h-16">
-                    <div className=" flex items-center">
+                    <div className="flex items-center">
                         <a className="flex-shrink-0" href="/">
                             <img className="h-10 w-10" src="/logo.png" alt=""/>
                         </a>
