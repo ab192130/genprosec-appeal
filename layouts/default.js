@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Navigation from "../app/main/partials/navigation";
 
 const DefaultLayout = (props) => {
     return (
@@ -9,9 +10,8 @@ const DefaultLayout = (props) => {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
-            <header>
-                <Link href="/" className="">Əsas səhifə</Link>
-                <Link href="/submit">Yeni müraciət</Link>
+            <header className="w-full px-10">
+                <Navigation/>
             </header>
 
             <main className="flex flex-col items-center justify-center flex-1 px-20">
