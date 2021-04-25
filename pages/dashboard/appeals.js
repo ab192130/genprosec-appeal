@@ -1,7 +1,5 @@
 import DashboardLayout from "../../layouts/dashboard";
 import Table from '../../app/system/ui/table';
-import {useState, useEffect} from 'react';
-import axios from 'axios';
 
 const Appeals = () => {
 
@@ -9,10 +7,19 @@ const Appeals = () => {
         full_name: {
             label: 'Adı, Soyadı',
             type: 'string',
-            avatar: 'avatar'
+            avatar: 'avatar',
+            primary: true
         },
         category: {
             label: 'Növ',
+            type: 'string',
+        },
+        email: {
+            label: 'E-poçt',
+            type: 'string',
+        },
+        phone: {
+            label: 'Telefon',
             type: 'string',
         },
         created_at: {

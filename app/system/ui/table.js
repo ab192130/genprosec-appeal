@@ -4,6 +4,7 @@ import Textfield from "./textfield";
 import axios from "axios";
 import {useState, useEffect} from 'react';
 import Loading from "./loading";
+import Chip from "./chip";
 
 const Table = ({data, title, schema, path}) => {
     const [fetching, setFetching] = useState(false);
@@ -26,6 +27,42 @@ const Table = ({data, title, schema, path}) => {
     useEffect(async () => {
         fetch();
     }, []);
+
+    const renderCell = (item, name) => {
+        const column = schema[name];
+        const value = item[name];
+
+        if (column.type === 'string') {
+            if (column.primary) return <Chip>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+
+                {value}
+            </Chip>;
+            if (column.format === 'date')
+                return <div className="flex flex-wrap items-center cursor-pointer group">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-gray-400 group-hover:text-blue-600 transition" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+
+                    <span className="text-gray-400 transition group-hover:text-gray-600">{value}</span>
+                </div>;
+
+            return <div className="flex flex-wrap items-center cursor-pointer group">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-gray-400 group-hover:text-blue-600 transition" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                </svg>
+
+                <span className="text-gray-400 transition group-hover:text-gray-600">{value}</span>
+            </div>;
+        }
+    };
 
     return (
         <div className="py-8">
@@ -74,7 +111,7 @@ const Table = ({data, title, schema, path}) => {
                 <div className="">
                     <Sheet>
                         {fetching ? <div className="p-10"><Loading size="xl"/></div>
-                        : <table className="min-w-full leading-normal">
+                            : <table className="min-w-full leading-normal">
                                 <thead>
                                 <tr>
                                     {Object.keys(schema).map((name, i) => {
@@ -93,13 +130,10 @@ const Table = ({data, title, schema, path}) => {
                                             return <td key={column_index.toString()}
                                                        className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                 <div className="flex flex-wrap items-center">
-                                                    {schema[column_name]['avatar'] &&
-                                                    <img alt="profil" src={`https://i.pravatar.cc/150?u=${item.id}`}
-                                                         className="h-10 w-10 rounded-full mr-3 bg-gray-100 cursor-pointer"/>}
-
-                                                    <p className="text-gray-900 whitespace-no-wrap">
-                                                        {item[column_name]}
-                                                    </p>
+                                                    <div className="flex flex-wrap items-center text-gray-900
+                                                         whitespace-no-wrap">
+                                                        {renderCell(item, column_name)}
+                                                    </div>
                                                 </div>
                                             </td>
                                         })}
