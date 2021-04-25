@@ -1,12 +1,16 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 const Textfield = ({name, value, placeholder, label, type, onChange}) => {
     const [field, setField] = useState(value);
 
-    const onChangeLocal = (val) => {
+    const updateValue = (val) => {
         setField(val);
         onChange(val);
     };
+
+    useEffect( () => {
+        setField(value);
+    }, [value]);
 
     return (
         <div className="relative">
@@ -19,7 +23,7 @@ const Textfield = ({name, value, placeholder, label, type, onChange}) => {
                    focus:ring mt-2 focus:ring-blue-600 focus:border-transparent focus:shadow-xl transition ease-in-out"
                    autoComplete="off"
                    value={field}
-                   onChange={(event) => onChangeLocal(event.target.value)}
+                   onChange={(event) => updateValue(event.target.value)}
                    name={name} placeholder={placeholder}/>
         </div>
     );

@@ -5,13 +5,25 @@ import {useState} from 'react';
 import axios from 'axios';
 
 const Submit = () => {
-    const [submitting, setSubmitting] = useState(false);
-    const [payload, setPayload] = useState({
+    const initial = {
         first_name: '',
         last_name: '',
         email: '',
         phone: '',
-    });
+    };
+
+    const [submitting, setSubmitting] = useState(false);
+    const [payload, setPayload] = useState(initial);
+
+    const reset = () => {
+        setPayload({
+            first_name: '',
+            last_name: '',
+            email: '',
+            phone: '',
+        });
+    };
+
 
     const submit = async () => {
         setSubmitting(true);
@@ -19,6 +31,8 @@ const Submit = () => {
         try {
             const res = await axios.post('https://60851effd14a870017577685.mockapi.io/api/v1/appeals', payload);
             console.log(res);
+
+            reset();
         } catch (e) {
             console.log(e);
         }

@@ -12,7 +12,8 @@
     "next": "latest",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "tailwindcss": "^2.1.2"
+    "tailwindcss": "^2.1.2",
+    "lodash": "latest"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
