@@ -1,11 +1,11 @@
-import Card from "./card";
+import Sheet from "./sheet";
 
-const Table = () => {
+const Table = ({data, title, schema}) => {
     return (
         <div className="py-8">
             <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
                 <h2 className="text-2xl leading-tight">
-                    Müraciətlər
+                    {title}
                 </h2>
                 <div className="text-end">
                     <form className="flex w-full max-w-sm space-x-3">
@@ -24,59 +24,36 @@ const Table = () => {
             </div>
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                 <div className="">
-                    <Card>
+                    <Sheet>
                         <table className="min-w-full leading-normal">
                             <thead>
                             <tr>
-                                <th scope="col"
-                                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    Göndərən
-                                </th>
-                                <th scope="col"
-                                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    Seriya Nömrəsi
-                                </th>
-                                <th scope="col"
-                                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    Tarix
-                                </th>
-                                <th scope="col"
-                                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                    status
-                                </th>
-                                <th scope="col"
-                                    className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                                </th>
+                                {Object.keys(schema).map((name, i) => {
+                                    return <th key={i} scope="col"
+                                        className="px-5 py-3 bg-white font-bold cursor-pointer
+                                        text-gray-800 text-left text-sm uppercase font-normal">
+                                        {schema[name].label}
+                                    </th>
+                                })}
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div className="flex items-center">
-                                        <div className="flex-shrink-0">
-                                            <a href="#" className="block relative">
-                                                <img alt="profil" src="https://i.pravatar.cc/150"
-                                                     className="mx-auto object-cover rounded-full h-10 w-10 "/>
-                                            </a>
-                                        </div>
-                                        <div className="ml-3">
-                                            <p className="text-gray-900 whitespace-no-wrap">
-                                                Sahib Kərimli
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p className="text-gray-900 whitespace-no-wrap">
-                                        AZE123123321
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p className="text-gray-900 whitespace-no-wrap">
-                                        12/09/2020
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            {data.map((item, row_index) => {
+                                return <tr key={row_index.toString()}>
+                                    {Object.keys(schema).map((column_name, column_index) => {
+                                        return <td key={column_index.toString()} className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <div className="flex flex-wrap items-center">
+                                                {schema[column_name]['avatar'] && <img alt="profil" src="https://i.pravatar.cc/150"
+                                                                          className="h-10 w-10 rounded-full mr-3"/>}
+
+                                                <p className="text-gray-900 whitespace-no-wrap">
+                                                    {item[column_name]}
+                                                </p>
+                                            </div>
+                                        </td>
+                                    })}
+
+                                    {/*<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <span
                                         className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                         <span aria-hidden="true"
@@ -86,145 +63,12 @@ const Table = () => {
                                             həll edilib
                                         </span>
                                     </span>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                                        Redaktə
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div className="flex items-center">
-                                        <div className="flex-shrink-0">
-                                            <a href="#" className="block relative">
-                                                <img alt="profil" src="https://i.pravatar.cc/150"
-                                                     className="mx-auto object-cover rounded-full h-10 w-10 "/>
-                                            </a>
-                                        </div>
-                                        <div className="ml-3">
-                                            <p className="text-gray-900 whitespace-no-wrap">
-                                                Zabit Səmədov
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p className="text-gray-900 whitespace-no-wrap">
-                                        MN123123321
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p className="text-gray-900 whitespace-no-wrap">
-                                        01/10/2012
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <span
-                                        className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden="true"
-                                              className="absolute inset-0 bg-green-200 opacity-50 rounded-full">
-                                        </span>
-                                        <span className="relative">
-                                            həll edilib
-                                        </span>
-                                    </span>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                                        Redaktə
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div className="flex items-center">
-                                        <div className="flex-shrink-0">
-                                            <a href="#" className="block relative">
-                                                <img alt="profil" src="https://i.pravatar.cc/150"
-                                                     className="mx-auto object-cover rounded-full h-10 w-10 "/>
-                                            </a>
-                                        </div>
-                                        <div className="ml-3">
-                                            <p className="text-gray-900 whitespace-no-wrap">
-                                                Şəhriyar Quliyev
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p className="text-gray-900 whitespace-no-wrap">
-                                        MND321123321
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p className="text-gray-900 whitespace-no-wrap">
-                                        02/10/2018
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <span
-                                        className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden="true"
-                                              className="absolute inset-0 bg-green-200 opacity-50 rounded-full">
-                                        </span>
-                                        <span className="relative">
-                                            həll edilib
-                                        </span>
-                                    </span>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                                        Redaktə
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div className="flex items-center">
-                                        <div className="flex-shrink-0">
-                                            <a href="#" className="block relative">
-                                                <img alt="profil" src="https://i.pravatar.cc/150"
-                                                     className="mx-auto object-cover rounded-full h-10 w-10 "/>
-                                            </a>
-                                        </div>
-                                        <div className="ml-3">
-                                            <p className="text-gray-900 whitespace-no-wrap">
-                                                Əsmər Qarayeva
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p className="text-gray-900 whitespace-no-wrap">
-                                        AZE123321123
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p className="text-gray-900 whitespace-no-wrap">
-                                        23/09/2010
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <span
-                                        className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        <span aria-hidden="true"
-                                              className="absolute inset-0 bg-green-200 opacity-50 rounded-full">
-                                        </span>
-                                        <span className="relative">
-                                            həll edilib
-                                        </span>
-                                    </span>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                                        Redaktə
-                                    </a>
-                                </td>
-                            </tr>
+                                </td>*/}
+                                </tr>
+                            })}
                             </tbody>
                         </table>
-                    </Card>
+                    </Sheet>
                     <div className="px-5 py-5 flex flex-col xs:flex-row items-center xs:justify-start">
                         <div className="flex items-center">
                             <button type="button"
@@ -267,6 +111,10 @@ const Table = () => {
             </div>
         </div>
     );
+};
+
+Table.defaultProps = {
+    data: []
 };
 
 export default Table;

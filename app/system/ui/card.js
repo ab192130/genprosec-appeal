@@ -1,7 +1,9 @@
+import Sheet from '../ui/sheet';
+
 const Card = ({children, title, subtitle, icon}) => {
     return (
-        <div className="mb-4">
-            <div className="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full">
+        <Sheet>
+            <div className="">
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center">
                         <span className="rounded-xl relative p-2 bg-blue-100">
@@ -31,7 +33,7 @@ const Card = ({children, title, subtitle, icon}) => {
                     {children}
                 </div>
             </div>
-        </div>
+        </Sheet>
     );
 };
 
