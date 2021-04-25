@@ -29,8 +29,8 @@ const Modal = ({active, onChange, title, children, icon, theme}) => {
 
     return (
         <>
-            {open && <div className="fixed inset-0 z-40 flex items-center justify-center
-            bg-blue-600 bg-opacity-10">
+            {open && <div className={`fixed inset-0 z-40 flex items-center justify-center
+            bg-${color}-600 bg-opacity-10`}>
 
             </div>}
             <Transition show={open} as={Fragment}>
@@ -64,12 +64,12 @@ const Modal = ({active, onChange, title, children, icon, theme}) => {
                         </span>
                         <Transition.Child
                             as={Fragment}
-                            enter="ease-out duration-300"
-                            enterFrom="opacity-0 scale-95"
+                            enter="ease-out duration-200"
+                            enterFrom="opacity-0 scale-75"
                             enterTo="opacity-100 scale-100"
-                            leave="ease-in duration-200"
+                            leave="ease-in duration-100"
                             leaveFrom="opacity-100 scale-100"
-                            leaveTo="opacity-0 scale-95"
+                            leaveTo="opacity-0 scale-75"
                         >
                             <div
                                 className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
@@ -94,7 +94,7 @@ const Modal = ({active, onChange, title, children, icon, theme}) => {
                                 </div>
 
                                 <div className="mt-4 space-x-4 flex flex-wrap justify-end">
-                                    <Button onClick={closeModal} theme="info">
+                                    <Button onClick={closeModal} theme="default">
                                         Xeyr, qalsın
                                     </Button>
                                     <Button theme={theme} onClick={closeModal} icon={

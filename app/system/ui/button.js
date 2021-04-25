@@ -3,11 +3,13 @@ import Loading from "./loading";
 
 const Button = ({children, theme, icon, loading, onClick, disabled}) => {
     const [isDisabled, setIsDisabled] = useState(disabled);
-    const [classes, setClasses] = useState('text-white bg-blue-600 hover:bg-blue-700 hover:text-white active:bg-blue-500');
+    const [classes, setClasses] = useState(null);
 
     useEffect(() => {
+        if (theme === 'primary') setClasses('text-white bg-blue-600 hover:bg-blue-700 hover:text-white active:bg-blue-500');
         if (theme === 'danger') setClasses('text-red-600 bg-white hover:bg-red-600 hover:text-white active:bg-red-700');
         if (theme === 'info') setClasses('text-blue-600 bg-white hover:bg-blue-600 hover:text-white active:bg-blue-700');
+        if (theme === 'default') setClasses('text-gray-400 bg-white hover:text-gray-500 active:bg-gray-50');
 
         setIsDisabled(!!loading);
 
@@ -40,6 +42,7 @@ const Button = ({children, theme, icon, loading, onClick, disabled}) => {
 Button.defaultProps = {
     loading: false,
     disabled: false,
+    theme: 'default',
 };
 
 export default Button;

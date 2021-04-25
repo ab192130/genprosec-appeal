@@ -77,7 +77,7 @@ const Table = ({data, title, schema, path}) => {
             <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
                 <h2 className="text-2xl leading-tight">
                     <div className="flex w-full max-w-sm space-x-3">
-                        <Button icon={
+                        <Button theme="primary" icon={
                             <svg xmlns="http://www.w3.org/2000/svg" className="" fill="none"
                                  viewBox="0 0 24 24"
                                  stroke="currentColor">
@@ -87,7 +87,7 @@ const Table = ({data, title, schema, path}) => {
                         }>
                             Yeni
                         </Button>
-                        <Button onClick={fetch} theme="info" loading={fetching} icon={
+                        <Button onClick={fetch} loading={fetching} icon={
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
