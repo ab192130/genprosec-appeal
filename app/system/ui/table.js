@@ -1,8 +1,32 @@
 import Sheet from "./sheet";
 import Button from "./button";
 import Textfield from "./textfield";
+import axios from "axios";
+import {useState, useEffect} from 'react';
+import Loading from "./loading";
 
-const Table = ({data, title, schema}) => {
+const Table = ({data, title, schema, path}) => {
+    const [fetching, setFetching] = useState(false);
+    const [appeals, setAppeals] = useState(data);
+
+    const fetch = async () => {
+        setFetching(true);
+
+        try {
+            const res = await axios.get(path);
+
+            setAppeals(res.data);
+        } catch (e) {
+            console.error(e);
+        }
+
+        setFetching(false);
+    };
+
+    useEffect(async () => {
+        fetch();
+    }, []);
+
     return (
         <div className="py-8">
             <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
@@ -18,7 +42,7 @@ const Table = ({data, title, schema}) => {
                         }>
                             Yeni
                         </Button>
-                        <Button theme="info" icon={
+                        <Button onClick={fetch} theme="info" icon={
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -49,37 +73,38 @@ const Table = ({data, title, schema}) => {
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                 <div className="">
                     <Sheet>
-                        <table className="min-w-full leading-normal">
-                            <thead>
-                            <tr>
-                                {Object.keys(schema).map((name, i) => {
-                                    return <th key={i} scope="col"
-                                               className="px-5 py-3 bg-white font-bold cursor-pointer
+                        {fetching ? <div className="p-10"><Loading size="xl"/></div>
+                        : <table className="min-w-full leading-normal">
+                                <thead>
+                                <tr>
+                                    {Object.keys(schema).map((name, i) => {
+                                        return <th key={i} scope="col"
+                                                   className="px-5 py-3 bg-white font-bold cursor-pointer
                                         text-gray-800 text-left text-sm uppercase font-normal">
-                                        {schema[name].label}
-                                    </th>
-                                })}
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {data.map((item, row_index) => {
-                                return <tr key={row_index.toString()}>
-                                    {Object.keys(schema).map((column_name, column_index) => {
-                                        return <td key={column_index.toString()}
-                                                   className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <div className="flex flex-wrap items-center">
-                                                {schema[column_name]['avatar'] &&
-                                                <img alt="profil" src={`https://i.pravatar.cc/150?u=${item.id}`}
-                                                     className="h-10 w-10 rounded-full mr-3 bg-gray-100 cursor-pointer"/>}
-
-                                                <p className="text-gray-900 whitespace-no-wrap">
-                                                    {item[column_name]}
-                                                </p>
-                                            </div>
-                                        </td>
+                                            {schema[name].label}
+                                        </th>
                                     })}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {appeals.map((item, row_index) => {
+                                    return <tr key={row_index.toString()}>
+                                        {Object.keys(schema).map((column_name, column_index) => {
+                                            return <td key={column_index.toString()}
+                                                       className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                <div className="flex flex-wrap items-center">
+                                                    {schema[column_name]['avatar'] &&
+                                                    <img alt="profil" src={`https://i.pravatar.cc/150?u=${item.id}`}
+                                                         className="h-10 w-10 rounded-full mr-3 bg-gray-100 cursor-pointer"/>}
 
-                                    {/*<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                    <p className="text-gray-900 whitespace-no-wrap">
+                                                        {item[column_name]}
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        })}
+
+                                        {/*<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <span
                                         className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                         <span aria-hidden="true"
@@ -90,10 +115,10 @@ const Table = ({data, title, schema}) => {
                                         </span>
                                     </span>
                                 </td>*/}
-                                </tr>
-                            })}
-                            </tbody>
-                        </table>
+                                    </tr>
+                                })}
+                                </tbody>
+                            </table>}
                     </Sheet>
                     <div className="px-5 py-5 flex flex-col xs:flex-row items-center xs:justify-start">
                         <div className="flex items-center">

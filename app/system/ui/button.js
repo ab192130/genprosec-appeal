@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-const Button = ({children, theme, icon, loading}) => {
+const Button = ({children, theme, icon, loading, onClick}) => {
     const [classes, setClasses] = useState('text-white bg-blue-600 hover:bg-blue-700 hover:text-white active:bg-blue-500');
 
     useEffect(() => {
@@ -10,6 +10,7 @@ const Button = ({children, theme, icon, loading}) => {
 
     return (
         <button
+            onClick={onClick}
             className={`flex-shrink-0 flex flex-wrap group items-center px-4 py-2 text-base font-semibold
             rounded-lg shadow-md focus:outline-none transition active:shadow-xl ${classes}`}
             type="button">
