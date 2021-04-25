@@ -8,12 +8,15 @@ import Loading from "./loading";
 import Chip from "./chip";
 import Checkbox from "./checkbox";
 import _ from "lodash";
+import Modal from "./modal";
 
 const Table = ({data, title, schema, path}) => {
     const [fetching, setFetching] = useState(false);
+    const [deleting, setDeleting] = useState(false);
     const [appeals, setAppeals] = useState(data);
     const [search, setSearch] = useState('');
     const [selectedItems, setSelectedItems] = useState([]);
+    const [deleteDialogActive, setDeleteDialogActive] = useState(false);
     const [page, setPage] = useState(1);
     const router = useRouter();
 
@@ -97,6 +100,30 @@ const Table = ({data, title, schema, path}) => {
         }
     }
 
+    async function deleteItems() {
+        setDeleting(true);
+
+        try {
+            selectedItems.forEach(selectedItem => {
+                axios.delete(`https://60851effd14a870017577685.mockapi.io/api/v1/appeals/${selectedItem.id}`)
+                    .then(res => {
+                        setAppeals(appeals.filter(appeal => {
+                            return !_.some(selectedItems, appeal);
+                        }));
+
+                        setSelectedItems([]);
+                    })
+                    .catch(err => {
+                        //..
+                    });
+            });
+        } catch (e) {
+            console.error(e);
+        }
+
+        setDeleting(false);
+    }
+
     const renderCell = (item, name) => {
         const column = schema[name];
         const value = item[name];
@@ -139,6 +166,21 @@ const Table = ({data, title, schema, path}) => {
 
     return (
         <div className="py-8">
+            <Modal active={deleteDialogActive} onChange={setDeleteDialogActive}
+                   theme="danger"
+                   color="red"
+                   onPositive={deleteItems}
+                   title="Əminsiniz?" icon={
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+            }>
+                Bu işləmi geri qaytarmaq mümkün olmayacaqdır. Ağır nəticələrdən yayınmaq üçün
+                bunu etmək istədiyinizə əmin olduğunuzu təsdiq etməlisiniz.
+            </Modal>
+
             <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
                 <h2 className="text-2xl leading-tight">
                     <div className="flex w-full max-w-sm space-x-3">
@@ -167,7 +209,10 @@ const Table = ({data, title, schema, path}) => {
                 {!!selectedItems.length && <div className="flex flex-wrap items-center space-x-5 text-end">
                     <div className="">{selectedItems.length} obyekt seçilib</div>
 
-                    <Button theme="danger" icon={
+                    <Button theme="danger"  onClick={(e) => {
+                        e.preventDefault();
+                        setDeleteDialogActive(true);
+                    }} icon={
                         <svg xmlns="http://www.w3.org/2000/svg"
                              className="text-red-600 group-hover:text-white" fill="none"
                              viewBox="0 0 24 24"
@@ -211,7 +256,8 @@ const Table = ({data, title, schema, path}) => {
                                             <div className="flex flex-wrap items-center">
                                                 <div className="flex flex-wrap items-center text-gray-900
                                                          whitespace-no-wrap">
-                                                    <Checkbox value={isSelected(item)} onChange={(val) => itemSelected(val, item)}/>
+                                                    <Checkbox value={isSelected(item)}
+                                                              onChange={(val) => itemSelected(val, item)}/>
                                                 </div>
                                             </div>
                                         </td>
