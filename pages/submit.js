@@ -6,8 +6,7 @@ import axios from 'axios';
 
 const Submit = () => {
     const initial = {
-        first_name: '',
-        last_name: '',
+        full_name: '',
         email: '',
         phone: '',
     };
@@ -17,8 +16,7 @@ const Submit = () => {
 
     const reset = () => {
         setPayload({
-            first_name: '',
-            last_name: '',
+            full_name: '',
             email: '',
             phone: '',
         });
@@ -49,11 +47,7 @@ const Submit = () => {
             <div className="grid sm:grid-cols-2 grid-cols-1 gap-10 mb-10">
                 <div className="">
                     <Textfield label="Ad" placeholder="Məs, Kənan" name="first_name"
-                               value={payload.first_name} onChange={val => payload.first_name = val}/>
-                </div>
-                <div className="">
-                    <Textfield label="Soyad" placeholder="Məs, Məmmədov" name="last_name"
-                               value={payload.last_name} onChange={val => payload.last_name = val}/>
+                               value={payload.full_name} onChange={val => payload.full_name = val}/>
                 </div>
                 <div className="">
                     <Textfield label="E-poçt" placeholder="Məs, kenan@mammadov.com" name="last_name"

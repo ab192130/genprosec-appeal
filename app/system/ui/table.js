@@ -69,8 +69,8 @@ const Table = ({data, title, schema}) => {
                                                    className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <div className="flex flex-wrap items-center">
                                                 {schema[column_name]['avatar'] &&
-                                                <img alt="profil" src="https://i.pravatar.cc/150"
-                                                     className="h-10 w-10 rounded-full mr-3"/>}
+                                                <img alt="profil" src={`https://i.pravatar.cc/150?u=${item.id}`}
+                                                     className="h-10 w-10 rounded-full mr-3 bg-gray-100 cursor-pointer"/>}
 
                                                 <p className="text-gray-900 whitespace-no-wrap">
                                                     {item[column_name]}

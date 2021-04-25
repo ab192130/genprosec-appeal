@@ -1,8 +1,10 @@
 import DashboardLayout from "../../layouts/dashboard";
 import Table from '../../app/system/ui/table';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 const Appeals = () => {
+    const [fetching, setFetching] = useState(false);
     const [appeals, setAppeals] = useState([
         {
             id: "1",
@@ -13,6 +15,17 @@ const Appeals = () => {
         }
     ]);
 
+    useEffect(async () => {
+        setFetching(true);
+
+        try {
+            const res = await axios.get('https://60851effd14a870017577685.mockapi.io/api/v1/appeals');
+
+            setAppeals(res.data);
+        } catch (e) {
+            console.error(e);
+        }
+    }, []);
 
     const schema = {
         full_name: {
