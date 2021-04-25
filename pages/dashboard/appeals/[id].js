@@ -2,10 +2,36 @@ import DashboardLayout from "../../../layouts/dashboard";
 import Card from "../../../app/system/ui/card";
 import Sheet from "../../../app/system/ui/sheet";
 import Button from "../../../app/system/ui/button";
+import {useState, useEffect} from 'react';
+import axios from 'axios';
+import {useRouter} from "next/router";
+import Loading from "../../../app/system/ui/loading";
 
-const Appeal = () => {
+const Appeal = ({id}) => {
+    const [fetching, setFetching] = useState(false);
+    const [item, setItem] = useState(null);
+    const router = useRouter();
+
+    const fetch = async (id) => {
+        setFetching(true);
+
+        try {
+            const res = await axios.get(`https://60851effd14a870017577685.mockapi.io/api/v1/appeals/${id}`);
+
+            setItem(res.data);
+        } catch (e) {
+            console.error(e);
+        }
+
+        setFetching(false);
+    };
+
+    useEffect(() => {
+        fetch(id);
+    }, []);
+
     return (
-        <div className="grid sm:grid-cols-4 grid-cols-1 gap-4">
+        fetching ? <div className="p-10"><Loading size="xl"/></div> : <div className="grid sm:grid-cols-4 grid-cols-1 gap-4">
             {/* Left side */}
             <div className="sm:col-span-3">
                 <Card title="Əsas məlumatlar">
@@ -115,5 +141,13 @@ const Appeal = () => {
 };
 
 Appeal.Layout = DashboardLayout;
+
+export const getServerSideProps = async (context) => {
+    return {
+        props: {
+            id: context.params.id
+        }
+    };
+};
 
 export default Appeal;

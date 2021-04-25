@@ -10,7 +10,7 @@ const Card = ({children, title, subtitle, icon}) => {
                             {icon}
                         </span>
                         <div className="flex flex-col">
-                            <span className="font-bold text-md text-gray-600 transition group-hover:text-black dark:text-white ml-2">
+                            <span className="font-bold cursor-pointer text-md text-gray-600 transition group-hover:text-black dark:text-white ml-2">
                                 {title}
                             </span>
                             <span className="text-sm text-gray-500 dark:text-white ml-2">
