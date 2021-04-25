@@ -6,6 +6,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useRouter} from "next/router";
 import Loading from "../../../app/system/ui/loading";
+import Textarea from "../../../app/system/ui/textarea";
 
 const Appeal = ({id}) => {
     const [fetching, setFetching] = useState(false);
@@ -94,6 +95,10 @@ const Appeal = ({id}) => {
                             </div>
                         </dl>
                     </div>
+                </Card>
+
+                <Card title="Cavab" subtitle="Müraciət sahibinə təqdim edilmiş cavab">
+                    <Textarea/>
                 </Card>
             </div>
 
