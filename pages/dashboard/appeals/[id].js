@@ -4,14 +4,14 @@ import Sheet from "../../../app/system/ui/sheet";
 import Button from "../../../app/system/ui/button";
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import {useRouter} from "next/router";
 import Loading from "../../../app/system/ui/loading";
 import Textarea from "../../../app/system/ui/textarea";
+import Modal from "../../../app/system/ui/modal";
 
 const Appeal = ({id}) => {
     const [fetching, setFetching] = useState(false);
     const [item, setItem] = useState(null);
-    const router = useRouter();
+    const [deleteDialogActive, setDeleteDialogActive] = useState(false);
 
     const fetch = async (id) => {
         setFetching(true);
@@ -32,7 +32,7 @@ const Appeal = ({id}) => {
     }, []);
 
     if (fetching) {
-        return <div className="p-10"><Loading size="xl"/></div>;
+        return <div className="p-10 m-10"><Loading size="xl"/></div>;
     }
 
     if (!item) {
@@ -41,6 +41,20 @@ const Appeal = ({id}) => {
 
     return (
         <div className="grid sm:grid-cols-4 grid-cols-1 gap-4">
+
+            <Modal active={deleteDialogActive} onChange={setDeleteDialogActive}
+                   theme="danger"
+                   title="Əminsiniz?" icon={
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+            }>
+                Bu işləmi geri qaytarmaq mümkün olmayacaqdır. Ağır nəticələrdən yayınmaq üçün
+                bunu etmək istədiyinizə əmin olduğunuzu təsdiq etməlisiniz.
+            </Modal>
+
             {/* Left side */}
             <div className="sm:col-span-3">
                 <Card title="Əsas məlumatlar">
@@ -107,7 +121,10 @@ const Appeal = ({id}) => {
                 <Sheet>
                     <div className="p-4 flex flex-col space-y-3">
                         <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
-                            <Button theme="danger" icon={
+                            <Button theme="danger" onClick={(e) => {
+                                e.preventDefault();
+                                setDeleteDialogActive(true);
+                            }} icon={
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      className="text-red-600 group-hover:text-white" fill="none"
                                      viewBox="0 0 24 24"

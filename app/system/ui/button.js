@@ -16,20 +16,23 @@ const Button = ({children, theme, icon, loading, onClick, disabled}) => {
 
     return (
         <button
-            onClick={isDisabled ? () => {} : onClick}
+            onClick={isDisabled ? () => {
+            } : onClick}
             className={`flex-shrink-0 flex flex-wrap group items-center px-4 py-2 text-base font-semibold
             rounded-lg shadow-md focus:outline-none transition active:shadow-xl ${classes}`}
             type="button">
 
-            {loading ? (<Loading color={isDisabled && 'gray-600'}/>) : (
-                icon && <div className="flex flex-wrap items-center">
-                    <div className="mr-2 h-6 w-6">
+            {loading ? <div className="flex flex-wrap"><Loading color={isDisabled && 'gray-600'}/>
+                    <div className="ml-2">bir dəq...</div>
+                </div> :
+                <div className="flex flex-wrap items-center">
+                    {icon && <div className="mr-2 h-6 w-6">
                         {icon}
-                    </div>
+                    </div>}
 
                     {children}
                 </div>
-            )}
+            }
         </button>
     );
 };
