@@ -2,25 +2,12 @@ import {Dialog, Transition} from "@headlessui/react";
 import {Fragment, useRef, useEffect, useState} from "react";
 import Button from "./button";
 
-const Modal = ({active, onChange, title, children, icon, theme}) => {
+const Modal = ({active, onChange, title, children, icon, theme, color}) => {
     const [open, setOpen] = useState(active);
-    const [color, setColor] = useState('gray');
     const cancelButtonRef = useRef();
-
-    const getColor = () => {
-        if (theme === 'danger') return 'red';
-        if (theme === 'info') return 'blue';
-    };
 
     useEffect(() => {
         setOpen(active);
-
-        let colorr = 'gray';
-
-        if (theme === 'danger') colorr = 'red';
-        if (theme === 'info') colorr = 'blue';
-
-        setColor(colorr);
     }, [active]);
 
     function closeModal() {
@@ -123,7 +110,8 @@ const Modal = ({active, onChange, title, children, icon, theme}) => {
 };
 
 Modal.defaultProps = {
-    theme: 'info'
+    theme: 'info',
+    color: 'gray'
 };
 
 export default Modal;
