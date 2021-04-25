@@ -30,7 +30,7 @@ const Modal = ({active, onChange, title, children, icon, theme}) => {
     return (
         <>
             {open && <div className={`fixed inset-0 z-40 flex items-center justify-center
-            bg-${color}-600 bg-opacity-10`}>
+            bg-blue-600 bg-opacity-10`}>
 
             </div>}
             <Transition show={open} as={Fragment}>
