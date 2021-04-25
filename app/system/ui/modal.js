@@ -23,7 +23,7 @@ const Modal = ({active, onChange, title, children, icon, theme, color}) => {
     return (
         <>
             {open && <div className={`fixed inset-0 z-40 flex items-center justify-center
-            bg-${color}-600 bg-opacity-10`}>
+            bg-red-600 bg-opacity-10`}>
 
             </div>}
             <Transition show={open} as={Fragment}>
@@ -67,7 +67,7 @@ const Modal = ({active, onChange, title, children, icon, theme, color}) => {
                             <div
                                 className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                                 <div className="flex items-center">
-                                    <span className={`rounded-xl relative p-2 bg-${color}-100`}>
+                                    <span className={`rounded-xl relative p-2 bg-red-100`}>
                                         {icon}
                                     </span>
                                     <div className="flex flex-col">
