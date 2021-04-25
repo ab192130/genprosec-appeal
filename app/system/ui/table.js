@@ -77,6 +77,26 @@ const Table = ({data, title, schema, path}) => {
         return _.some(selectedItems, item);
     }
 
+    function isAllSelected() {
+        return appeals.length === appeals.filter(appeal => {
+            return isSelected(appeal);
+        }).length;
+    }
+
+    function allSelected(val) {
+        if (val === true) {
+            let floors = [...selectedItems];
+
+            appeals.forEach(appeal => {
+                floors.push(appeal);
+            });
+
+            setSelectedItems(floors);
+        } else {
+            setSelectedItems([]);
+        }
+    }
+
     const renderCell = (item, name) => {
         const column = schema[name];
         const value = item[name];
@@ -172,7 +192,7 @@ const Table = ({data, title, schema, path}) => {
                                     <th scope="col"
                                         className="px-5 py-3 bg-white font-bold cursor-pointer
                                         text-gray-500 transition hover:text-gray-800 text-left text-sm uppercase font-normal">
-                                        [.]
+                                        <Checkbox value={isAllSelected()} onChange={allSelected}/>
                                     </th>
                                     {Object.keys(schema).map((name, i) => {
                                         return <th key={i} scope="col"
