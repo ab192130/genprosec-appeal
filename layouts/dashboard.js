@@ -1,4 +1,3 @@
-import Card from "../app/system/ui/card";
 import Sidebar from "../app/system/partials/sidebar";
 
 const DashboardLayout = ({children}) => {
