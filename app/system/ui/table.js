@@ -10,13 +10,20 @@ import Chip from "./chip";
 const Table = ({data, title, schema, path}) => {
     const [fetching, setFetching] = useState(false);
     const [appeals, setAppeals] = useState(data);
+    const [page, setPage] = useState(1);
     const router = useRouter();
+
 
     const fetch = async () => {
         setFetching(true);
 
         try {
-            const res = await axios.get(path);
+            const res = await axios.get(path, {
+                params: {
+                    page: page,
+                    limit: 10
+                }
+            });
 
             setAppeals(res.data);
         } catch (e) {
@@ -26,15 +33,25 @@ const Table = ({data, title, schema, path}) => {
         setFetching(false);
     };
 
-    useEffect(async () => {
+    useEffect(() => {
         fetch();
-    }, []);
+    }, [page]);
 
     const goToItem = (event, item) => {
         event.preventDefault();
 
         router.push(`appeals/${item.id}`)
     };
+
+    function nextPage() {
+        setPage(page + 1);
+    }
+
+    function previousPage() {
+        if (page <= 1) return;
+
+        setPage(page - 1);
+    }
 
     const renderCell = (item, name) => {
         const column = schema[name];
@@ -52,7 +69,9 @@ const Table = ({data, title, schema, path}) => {
             </Chip>;
             if (column.format === 'date')
                 return <div className="flex flex-wrap items-center cursor-pointer group">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-gray-400 group-hover:text-blue-600 transition" fill="none" viewBox="0 0 24 24"
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         className="h-6 w-6 mr-2 text-gray-400 group-hover:text-blue-600 transition" fill="none"
+                         viewBox="0 0 24 24"
                          stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                               d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
@@ -62,7 +81,9 @@ const Table = ({data, title, schema, path}) => {
                 </div>;
 
             return <div className="flex flex-wrap items-center cursor-pointer group">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-gray-400 group-hover:text-blue-600 transition" fill="none" viewBox="0 0 24 24"
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     className="h-6 w-6 mr-2 text-gray-400 group-hover:text-blue-600 transition" fill="none"
+                     viewBox="0 0 24 24"
                      stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"/>
                 </svg>
@@ -164,8 +185,8 @@ const Table = ({data, title, schema, path}) => {
                     </Sheet>
                     <div className="px-5 py-5 flex flex-col xs:flex-row items-center xs:justify-start">
                         <div className="flex items-center">
-                            <button type="button"
-                                    className="w-full p-4 border text-base rounded-l-xl text-gray-600 bg-white hover:bg-gray-100">
+                            <button type="button" onClick={previousPage}
+                                    className="w-full p-4 focus:outline-none border text-base rounded-l-xl text-gray-600 bg-white hover:bg-gray-100">
                                 <svg width="9" fill="currentColor" height="8" className="" viewBox="0 0 1792 1792"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -174,23 +195,11 @@ const Table = ({data, title, schema, path}) => {
                                 </svg>
                             </button>
                             <button type="button"
-                                    className="w-full px-4 py-2 border-t border-b text-base text-indigo-500 bg-white hover:bg-gray-100 ">
-                                1
+                                    className="w-full px-4 py-2 focus:outline-none border-t border-b text-base text-gray-500 bg-white hover:bg-gray-100 ">
+                                {page}
                             </button>
-                            <button type="button"
-                                    className="w-full px-4 py-2 border text-base text-gray-600 bg-white hover:bg-gray-100">
-                                2
-                            </button>
-                            <button type="button"
-                                    className="w-full px-4 py-2 border-t border-b text-base text-gray-600 bg-white hover:bg-gray-100">
-                                3
-                            </button>
-                            <button type="button"
-                                    className="w-full px-4 py-2 border text-base text-gray-600 bg-white hover:bg-gray-100">
-                                4
-                            </button>
-                            <button type="button"
-                                    className="w-full p-4 border-t border-b border-r text-base  rounded-r-xl text-gray-600 bg-white hover:bg-gray-100">
+                            <button type="button" onClick={nextPage}
+                                    className="w-full p-4 focus:outline-none border-t border-b border-r text-base  rounded-r-xl text-gray-600 bg-white hover:bg-gray-100">
                                 <svg width="9" fill="currentColor" height="8" className="" viewBox="0 0 1792 1792"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
