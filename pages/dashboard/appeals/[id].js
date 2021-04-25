@@ -3,6 +3,7 @@ import Card from "../../../app/system/ui/card";
 import Sheet from "../../../app/system/ui/sheet";
 import Button from "../../../app/system/ui/button";
 import {useState, useEffect} from 'react';
+import {useRouter} from "next/router";
 import axios from 'axios';
 import Loading from "../../../app/system/ui/loading";
 import Textarea from "../../../app/system/ui/textarea";
@@ -10,8 +11,10 @@ import Modal from "../../../app/system/ui/modal";
 
 const Appeal = ({id}) => {
     const [fetching, setFetching] = useState(false);
+    const [deleting, setDeleting] = useState(false);
     const [item, setItem] = useState(null);
     const [deleteDialogActive, setDeleteDialogActive] = useState(false);
+    const router = useRouter();
 
     const fetch = async (id) => {
         setFetching(true);
@@ -26,6 +29,19 @@ const Appeal = ({id}) => {
 
         setFetching(false);
     };
+
+    async function deleteItem() {
+        setDeleting(true);
+
+        try {
+            const res = await axios.delete(`https://60851effd14a870017577685.mockapi.io/api/v1/appeals/${id}`);
+            router.push('/dashboard/appeals');
+        } catch (e) {
+            console.error(e);
+        }
+
+        setDeleting(false);
+    }
 
     useEffect(() => {
         fetch(id);
@@ -45,6 +61,7 @@ const Appeal = ({id}) => {
             <Modal active={deleteDialogActive} onChange={setDeleteDialogActive}
                    theme="danger"
                    color="red"
+                   onPositive={deleteItem}
                    title="Əminsiniz?" icon={
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
@@ -122,7 +139,7 @@ const Appeal = ({id}) => {
                 <Sheet>
                     <div className="p-4 flex flex-col space-y-3">
                         <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
-                            <Button theme="danger" onClick={(e) => {
+                            <Button theme="danger" loading={deleting} onClick={(e) => {
                                 e.preventDefault();
                                 setDeleteDialogActive(true);
                             }} icon={

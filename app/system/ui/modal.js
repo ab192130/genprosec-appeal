@@ -2,7 +2,7 @@ import {Dialog, Transition} from "@headlessui/react";
 import {Fragment, useRef, useEffect, useState} from "react";
 import Button from "./button";
 
-const Modal = ({active, onChange, title, children, icon, theme, color}) => {
+const Modal = ({active, onChange, title, children, icon, theme, color, onPositive}) => {
     const [open, setOpen] = useState(active);
     const cancelButtonRef = useRef();
 
@@ -18,6 +18,11 @@ const Modal = ({active, onChange, title, children, icon, theme, color}) => {
     function openModal() {
         setOpen(true);
         onChange(true);
+    }
+
+    function runPositive(e) {
+        closeModal();
+        onPositive(e);
     }
 
     return (
@@ -90,7 +95,7 @@ const Modal = ({active, onChange, title, children, icon, theme, color}) => {
                                     <Button onClick={closeModal} theme="default">
                                         Xeyr, qalsın
                                     </Button>
-                                    <Button theme={theme} onClick={closeModal} icon={
+                                    <Button theme={theme} onClick={runPositive} icon={
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
