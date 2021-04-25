@@ -6,12 +6,10 @@ const Modal = ({active, onChange, title, children, icon, theme}) => {
     const [open, setOpen] = useState(active);
     const cancelButtonRef = useRef();
 
-    const makeColorByTheme = () => {
+    const getColor = () => {
         if (theme === 'danger') return 'red';
         if (theme === 'info') return 'blue';
     };
-
-    let color = makeColorByTheme();
 
     useEffect(() => {
         setOpen(active);
@@ -30,7 +28,7 @@ const Modal = ({active, onChange, title, children, icon, theme}) => {
     return (
         <>
             {open && <div className={`fixed inset-0 z-40 flex items-center justify-center
-            bg-blue-600 bg-opacity-10`}>
+            bg-${getColor()}-600 bg-opacity-10`}>
 
             </div>}
             <Transition show={open} as={Fragment}>
@@ -74,7 +72,7 @@ const Modal = ({active, onChange, title, children, icon, theme}) => {
                             <div
                                 className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                                 <div className="flex items-center">
-                                    <span className={`rounded-xl relative p-2 bg-${color}-100`}>
+                                    <span className={`rounded-xl relative p-2 bg-${getColor()}-100`}>
                                         {icon}
                                     </span>
                                     <div className="flex flex-col">
