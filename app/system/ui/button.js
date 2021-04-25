@@ -11,7 +11,7 @@ const Button = ({children, theme, icon, loading, onClick, disabled}) => {
 
         setIsDisabled(!!loading);
 
-        if (isDisabled) setClasses('bg-gray-200');
+        if (isDisabled) setClasses('bg-gray-200 cursor-default');
     });
 
     return (

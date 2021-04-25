@@ -3,14 +3,14 @@ import Sheet from '../ui/sheet';
 const Card = ({children, title, subtitle, icon}) => {
     return (
         <Sheet>
-            <div className="p-4">
+            <div className="p-4 group">
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center">
                         <span className="rounded-xl relative p-2 bg-blue-100">
                             {icon}
                         </span>
                         <div className="flex flex-col">
-                            <span className="font-bold text-md text-black dark:text-white ml-2">
+                            <span className="font-bold text-md text-gray-600 transition group-hover:text-black dark:text-white ml-2">
                                 {title}
                             </span>
                             <span className="text-sm text-gray-500 dark:text-white ml-2">
