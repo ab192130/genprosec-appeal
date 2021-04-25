@@ -35,7 +35,7 @@ const Navigation = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="block">
+                    <div className="hidden md:block">
                         <div className="md:block -mr-2 flex">
                             <form className="flex w-full max-w-sm space-x-3">
                                 <Button>
@@ -63,11 +63,11 @@ const Navigation = () => {
                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                     <Link
                         className="uppercase text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                        href="/#">
+                        href="/">
                         Əsas səhifə
                     </Link>
                     <Link className="uppercase text-gray-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium"
-                          href="/#">
+                          href="/">
                         Haqqımızda
                     </Link>
                     <Link
@@ -77,17 +77,12 @@ const Navigation = () => {
                     </Link>
                     <Link
                         className="uppercase text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                        href="/#">
+                        href="/">
                         Əlaqə
                     </Link>
                 </div>
                 <div className="p-2 flex">
                     <form className="flex w-full max-w-sm space-x-3">
-                        <div className=" relative ">
-                            <input type="text" id="&quot;form-subscribe-Search"
-                                   className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                   placeholder="components"/>
-                        </div>
                         <Button>
                             Yeni müraciət
                         </Button>

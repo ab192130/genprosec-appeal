@@ -8,20 +8,33 @@ const Table = ({data, title, schema}) => {
             <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
                 <h2 className="text-2xl leading-tight">
                     <form className="flex w-full max-w-sm space-x-3">
-                        <Button>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
+                        <Button icon={
+                            <svg xmlns="http://www.w3.org/2000/svg" className="" fill="none"
+                                 viewBox="0 0 24 24"
                                  stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                       d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                             </svg>
-
+                        }>
                             Yeni
                         </Button>
                         <Textfield placeholder="Axtarış"/>
                     </form>
                 </h2>
                 <div className="text-end">
+                    <Button theme="danger" icon={
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             className="text-red-600 group-hover:text-white" fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5
+                                  4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                        </svg>
+                    }>
 
+                        Sil
+                    </Button>
                 </div>
             </div>
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -32,7 +45,7 @@ const Table = ({data, title, schema}) => {
                             <tr>
                                 {Object.keys(schema).map((name, i) => {
                                     return <th key={i} scope="col"
-                                        className="px-5 py-3 bg-white font-bold cursor-pointer
+                                               className="px-5 py-3 bg-white font-bold cursor-pointer
                                         text-gray-800 text-left text-sm uppercase font-normal">
                                         {schema[name].label}
                                     </th>
@@ -43,10 +56,12 @@ const Table = ({data, title, schema}) => {
                             {data.map((item, row_index) => {
                                 return <tr key={row_index.toString()}>
                                     {Object.keys(schema).map((column_name, column_index) => {
-                                        return <td key={column_index.toString()} className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        return <td key={column_index.toString()}
+                                                   className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <div className="flex flex-wrap items-center">
-                                                {schema[column_name]['avatar'] && <img alt="profil" src="https://i.pravatar.cc/150"
-                                                                          className="h-10 w-10 rounded-full mr-3"/>}
+                                                {schema[column_name]['avatar'] &&
+                                                <img alt="profil" src="https://i.pravatar.cc/150"
+                                                     className="h-10 w-10 rounded-full mr-3"/>}
 
                                                 <p className="text-gray-900 whitespace-no-wrap">
                                                     {item[column_name]}
