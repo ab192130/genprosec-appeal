@@ -2,12 +2,26 @@ import DefaultLayout from "../layouts/default";
 import Textfield from "../app/main/ui/textfield";
 import Button from "../app/main/ui/button";
 import {useState} from 'react';
+import axios from 'axios';
 
 const Submit = () => {
     const [submitting, setSubmitting] = useState(false);
 
-    const submit = () => {
-      alert('submit');
+    const submit = async () => {
+        setSubmitting(true);
+
+        try {
+            const res = await axios.post('https://60851effd14a870017577685.mockapi.io/api/v1/appeals', {
+                first_name: 'hey',
+                last_name: 'alooo'
+            });
+
+            console.log(res);
+        } catch (e) {
+            console.log(e);
+        }
+
+        setSubmitting(false);
     };
 
     return (
@@ -32,7 +46,7 @@ const Submit = () => {
             </div>
 
             <div className="text-right">
-                <Button onClick={submit}>
+                <Button onClick={submit} loading={submitting}>
                     Növbəti
 
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20"
