@@ -42,7 +42,7 @@ const Table = ({data, title, schema, path}) => {
                         }>
                             Yeni
                         </Button>
-                        <Button onClick={fetch} theme="info" icon={
+                        <Button onClick={fetch} theme="info" loading={fetching} icon={
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"

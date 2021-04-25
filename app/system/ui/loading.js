@@ -1,5 +1,4 @@
-
-const Loading = ({size}) => {
+const Loading = ({size, color}) => {
     let dimensions = {
         width: 20,
         height: 20,
@@ -16,7 +15,7 @@ const Loading = ({size}) => {
     makeSize();
 
     return (
-        <div className="flex items-center justify-center text-blue-600">
+        <div className={`flex items-center justify-center text-${color}`}>
             <svg width={dimensions.width} height={dimensions.height} fill="currentColor"
                  className="animate-spin" viewBox="0 0 1792 1792"
                  xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +28,8 @@ const Loading = ({size}) => {
 };
 
 Loading.defaultProps = {
-    size: 'xs'
+    size: 'xs',
+    color: 'blue-600'
 };
 
 export default Loading;
