@@ -5,6 +5,7 @@ const Button = ({children, theme, icon, loading}) => {
 
     useEffect(() => {
         if (theme === 'danger') setClasses('text-red-600 bg-white hover:bg-red-600 hover:text-white active:bg-red-700');
+        if (theme === 'info') setClasses('text-blue-600 bg-white hover:bg-blue-600 hover:text-white active:bg-blue-700');
     });
 
     return (

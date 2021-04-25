@@ -7,19 +7,28 @@ const Table = ({data, title, schema}) => {
         <div className="py-8">
             <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
                 <h2 className="text-2xl leading-tight">
-                    <form className="flex w-full max-w-sm space-x-3">
+                    <div className="flex w-full max-w-sm space-x-3">
                         <Button icon={
                             <svg xmlns="http://www.w3.org/2000/svg" className="" fill="none"
                                  viewBox="0 0 24 24"
                                  stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                       d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                             </svg>
                         }>
                             Yeni
                         </Button>
+                        <Button theme="info" icon={
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                        }>
+                            Yenilə
+                        </Button>
                         <Textfield placeholder="Axtarış"/>
-                    </form>
+                    </div>
                 </h2>
                 <div className="text-end">
                     <Button theme="danger" icon={
