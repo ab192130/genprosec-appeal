@@ -1,9 +1,15 @@
-import React from 'react';
 import DefaultLayout from "../layouts/default";
 import Textfield from "../app/main/ui/textfield";
 import Button from "../app/main/ui/button";
+import {useState} from 'react';
 
 const Submit = () => {
+    const [submitting, setSubmitting] = useState(false);
+
+    const submit = () => {
+      alert('submit');
+    };
+
     return (
         <div>
             <div className="text-7xl mb-10 font-bold">
@@ -26,7 +32,7 @@ const Submit = () => {
             </div>
 
             <div className="text-right">
-                <Button>
+                <Button onClick={submit}>
                     Növbəti
 
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20"
