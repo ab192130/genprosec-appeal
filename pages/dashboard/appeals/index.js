@@ -1,5 +1,5 @@
-import DashboardLayout from "../../layouts/dashboard";
-import Table from '../../app/system/ui/table';
+import DashboardLayout from "../../../layouts/dashboard";
+import Table from '../../../app/system/ui/table';
 
 const Appeals = () => {
 

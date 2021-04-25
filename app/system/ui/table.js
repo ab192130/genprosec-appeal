@@ -3,12 +3,14 @@ import Button from "./button";
 import Textfield from "./textfield";
 import axios from "axios";
 import {useState, useEffect} from 'react';
+import {useRouter} from 'next/router';
 import Loading from "./loading";
 import Chip from "./chip";
 
 const Table = ({data, title, schema, path}) => {
     const [fetching, setFetching] = useState(false);
     const [appeals, setAppeals] = useState(data);
+    const router = useRouter();
 
     const fetch = async () => {
         setFetching(true);
@@ -28,12 +30,18 @@ const Table = ({data, title, schema, path}) => {
         fetch();
     }, []);
 
+    const goToItem = (event, item) => {
+        event.preventDefault();
+
+        router.push(`appeals/${item.id}`)
+    };
+
     const renderCell = (item, name) => {
         const column = schema[name];
         const value = item[name];
 
         if (column.type === 'string') {
-            if (column.primary) return <Chip>
+            if (column.primary) return <Chip onClick={event => goToItem(event, item)}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
