@@ -3,7 +3,7 @@ import Sheet from '../ui/sheet';
 const Card = ({children, title, subtitle, icon}) => {
     return (
         <Sheet>
-            <div className="">
+            <div className="p-4">
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center">
                         <span className="rounded-xl relative p-2 bg-blue-100">

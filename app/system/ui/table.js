@@ -125,10 +125,10 @@ const Table = ({data, title, schema, path}) => {
                                 </thead>
                                 <tbody>
                                 {appeals.map((item, row_index) => {
-                                    return <tr key={row_index.toString()}>
+                                    return <tr key={row_index.toString()} className="bg-white hover:bg-gray-50 ">
                                         {Object.keys(schema).map((column_name, column_index) => {
                                             return <td key={column_index.toString()}
-                                                       className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                       className="px-5 py-5 border-b border-gray-200 text-sm">
                                                 <div className="flex flex-wrap items-center">
                                                     <div className="flex flex-wrap items-center text-gray-900
                                                          whitespace-no-wrap">

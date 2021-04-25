@@ -1,7 +1,7 @@
 const Card = ({children}) => {
     return (
         <div className="mb-4">
-            <div className="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full">
+            <div className="shadow-lg rounded-2xl bg-white dark:bg-gray-700 w-full overflow-hidden">
                 {children}
             </div>
         </div>
