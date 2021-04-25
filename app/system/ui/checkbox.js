@@ -15,7 +15,7 @@ const Checkbox = ({value, onChange}) => {
     return (
         <input type="checkbox"
                className="form-tick appearance-none bg-white bg-check h-6 w-6 border border-gray-300 rounded-md
-                    checked:bg-blue-200 checked:border-transparent focus:outline-none cursor-pointer"
+                    checked:bg-green-200 checked:border-transparent focus:outline-none cursor-pointer"
                checked={field}
                onChange={(event) => updateValue(event.target.checked)}/>
     );
