@@ -2,7 +2,7 @@ import Sheet from "./sheet";
 import Button from "./button";
 import Textfield from "./textfield";
 import axios from "axios";
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useLayoutEffect} from 'react';
 import {useRouter} from 'next/router';
 import Loading from "./loading";
 import Chip from "./chip";
@@ -10,6 +10,7 @@ import Chip from "./chip";
 const Table = ({data, title, schema, path}) => {
     const [fetching, setFetching] = useState(false);
     const [appeals, setAppeals] = useState(data);
+    const [search, setSearch] = useState('');
     const [page, setPage] = useState(1);
     const router = useRouter();
 
@@ -21,7 +22,8 @@ const Table = ({data, title, schema, path}) => {
             const res = await axios.get(path, {
                 params: {
                     page: page,
-                    limit: 10
+                    limit: 10,
+                    search
                 }
             });
 
@@ -35,7 +37,7 @@ const Table = ({data, title, schema, path}) => {
 
     useEffect(() => {
         fetch();
-    }, [page]);
+    }, [page, search]);
 
     const goToItem = (event, item) => {
         event.preventDefault();
@@ -51,6 +53,10 @@ const Table = ({data, title, schema, path}) => {
         if (page <= 1) return;
 
         setPage(page - 1);
+    }
+
+    function onSearchChange(val) {
+        setSearch(val);
     }
 
     const renderCell = (item, name) => {
@@ -117,7 +123,7 @@ const Table = ({data, title, schema, path}) => {
                         }>
                             Yenilə
                         </Button>
-                        <Textfield placeholder="Axtarış"/>
+                        <Textfield placeholder="Axtarış" value={search} onChange={onSearchChange}/>
                     </div>
                 </h2>
                 <div className="text-end">
