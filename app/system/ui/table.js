@@ -125,7 +125,7 @@ const Table = ({data, title, schema, path}) => {
                                     {Object.keys(schema).map((name, i) => {
                                         return <th key={i} scope="col"
                                                    className="px-5 py-3 bg-white font-bold cursor-pointer
-                                        text-gray-800 text-left text-sm uppercase font-normal">
+                                        text-gray-500 transition hover:text-gray-800 text-left text-sm uppercase font-normal">
                                             {schema[name].label}
                                         </th>
                                     })}
