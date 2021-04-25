@@ -1,25 +1,27 @@
 import Sheet from "./sheet";
+import Button from "./button";
+import Textfield from "./textfield";
 
 const Table = ({data, title, schema}) => {
     return (
         <div className="py-8">
             <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
                 <h2 className="text-2xl leading-tight">
-                    {title}
+                    <form className="flex w-full max-w-sm space-x-3">
+                        <Button>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+
+                            Yeni
+                        </Button>
+                        <Textfield placeholder="Axtarış"/>
+                    </form>
                 </h2>
                 <div className="text-end">
-                    <form className="flex w-full max-w-sm space-x-3">
-                        <div className="relative">
-                            <input type="text" id="&quot;form-subscribe-Filter"
-                                   className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                   placeholder="Axtar"/>
-                        </div>
-                        <button
-                            className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-blue-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
-                            type="submit">
-                            Filter
-                        </button>
-                    </form>
+
                 </div>
             </div>
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
