@@ -14,7 +14,13 @@ const Modal = ({active, onChange, title, children, icon, theme}) => {
 
     useEffect(() => {
         setOpen(active);
-        setColor(getColor());
+
+        let color = 'gray';
+
+        if (theme === 'danger') color = 'red';
+        if (theme === 'info') color = 'blue';
+
+        setColor(color);
     }, [active]);
 
     function closeModal() {
