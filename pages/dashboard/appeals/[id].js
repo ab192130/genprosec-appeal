@@ -30,8 +30,16 @@ const Appeal = ({id}) => {
         fetch(id);
     }, []);
 
+    if (fetching) {
+        return <div className="p-10"><Loading size="xl"/></div>;
+    }
+
+    if (!item) {
+        return "no item"
+    }
+
     return (
-        fetching ? <div className="p-10"><Loading size="xl"/></div> : <div className="grid sm:grid-cols-4 grid-cols-1 gap-4">
+        <div className="grid sm:grid-cols-4 grid-cols-1 gap-4">
             {/* Left side */}
             <div className="sm:col-span-3">
                 <Card title="Əsas məlumatlar">
@@ -43,7 +51,7 @@ const Appeal = ({id}) => {
                                     Ad, soyad
                                 </dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    Mamed Məmmədov
+                                    {item.full_name}
                                 </dd>
                             </div>
                             <div
@@ -52,7 +60,7 @@ const Appeal = ({id}) => {
                                     Müraciətin növü
                                 </dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    Şikayət
+                                    {item.category}
                                 </dd>
                             </div>
                             <div
@@ -61,7 +69,7 @@ const Appeal = ({id}) => {
                                     E-poçt
                                 </dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    mamed@email.com
+                                    {item.email}
                                 </dd>
                             </div>
                             <div
@@ -70,7 +78,7 @@ const Appeal = ({id}) => {
                                     Telefon
                                 </dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    +99412 312 33 21
+                                    {item.phone}
                                 </dd>
                             </div>
                             <div
@@ -106,7 +114,7 @@ const Appeal = ({id}) => {
                             }>
                                 Sil
                             </Button>
-                            <Button icon={
+                            <Button disabled icon={
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
                                      viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -127,11 +135,11 @@ const Appeal = ({id}) => {
                     <div className="space-y-2">
                         <div className="flex flex-wrap justify-between group cursor-pointer">
                             <div className="text-gray-400">Yaradılıb</div>
-                            <div className="text-gray-400 group-hover:text-gray-600 transition">[tarix]</div>
+                            <div className="text-gray-400 group-hover:text-gray-600 transition">{item.created_at}</div>
                         </div>
                         <div className="flex flex-wrap justify-between group cursor-pointer ">
                             <div className="text-gray-400">Son yenilənmə</div>
-                            <div className="text-gray-400 group-hover:text-gray-600 transition">[tarix]</div>
+                            <div className="text-gray-400 group-hover:text-gray-600 transition">{item.created_at}</div>
                         </div>
                     </div>
                 </Card>
