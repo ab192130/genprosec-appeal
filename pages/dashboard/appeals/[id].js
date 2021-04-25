@@ -50,7 +50,7 @@ const Appeal = () => {
                             <div
                                 className="bg-gray-50 hover:bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt className="text-sm font-medium text-gray-500">
-                                    About
+                                    Təsvir
                                 </dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas interdum ex eu
