@@ -7,7 +7,7 @@ const Appeals = () => {
 
     const schema = {
         full_name: {
-            label: 'Adı Soyadı',
+            label: 'Adı, Soyadı',
             type: 'string',
             avatar: 'avatar'
         },
