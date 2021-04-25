@@ -6,11 +6,14 @@ import {useState, useEffect, useLayoutEffect} from 'react';
 import {useRouter} from 'next/router';
 import Loading from "./loading";
 import Chip from "./chip";
+import Checkbox from "./checkbox";
+import _ from "lodash";
 
 const Table = ({data, title, schema, path}) => {
     const [fetching, setFetching] = useState(false);
     const [appeals, setAppeals] = useState(data);
     const [search, setSearch] = useState('');
+    const [selectedItems, setSelectedItems] = useState([]);
     const [page, setPage] = useState(1);
     const router = useRouter();
 
@@ -57,6 +60,21 @@ const Table = ({data, title, schema, path}) => {
 
     function onSearchChange(val) {
         setSearch(val);
+    }
+
+    function itemSelected(val, item) {
+        if (val === true) {
+            setSelectedItems([...selectedItems, item]);
+        } else {
+            const filtered = selectedItems.filter(filterable => {
+                return filterable.id !== item.id;
+            });
+            setSelectedItems(filtered);
+        }
+    }
+
+    function isSelected(item) {
+        return _.some(selectedItems, item);
     }
 
     const renderCell = (item, name) => {
@@ -126,7 +144,9 @@ const Table = ({data, title, schema, path}) => {
                         <Textfield placeholder="Axtarış" value={search} onChange={onSearchChange}/>
                     </div>
                 </h2>
-                <div className="text-end">
+                {!!selectedItems.length && <div className="flex flex-wrap items-center space-x-5 text-end">
+                    <div className="">{selectedItems.length} obyekt seçilib</div>
+
                     <Button theme="danger" icon={
                         <svg xmlns="http://www.w3.org/2000/svg"
                              className="text-red-600 group-hover:text-white" fill="none"
@@ -140,7 +160,7 @@ const Table = ({data, title, schema, path}) => {
 
                         Sil
                     </Button>
-                </div>
+                </div>}
             </div>
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                 <div className="">
@@ -149,6 +169,11 @@ const Table = ({data, title, schema, path}) => {
                             : <table className="min-w-full leading-normal">
                                 <thead>
                                 <tr>
+                                    <th scope="col"
+                                        className="px-5 py-3 bg-white font-bold cursor-pointer
+                                        text-gray-500 transition hover:text-gray-800 text-left text-sm uppercase font-normal">
+                                        [.]
+                                    </th>
                                     {Object.keys(schema).map((name, i) => {
                                         return <th key={i} scope="col"
                                                    className="px-5 py-3 bg-white font-bold cursor-pointer
@@ -161,6 +186,14 @@ const Table = ({data, title, schema, path}) => {
                                 <tbody>
                                 {appeals.map((item, row_index) => {
                                     return <tr key={row_index.toString()} className="bg-white hover:bg-gray-50 ">
+                                        <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                                            <div className="flex flex-wrap items-center">
+                                                <div className="flex flex-wrap items-center text-gray-900
+                                                         whitespace-no-wrap">
+                                                    <Checkbox value={isSelected(item)} onChange={(val) => itemSelected(val, item)}/>
+                                                </div>
+                                            </div>
+                                        </td>
                                         {Object.keys(schema).map((column_name, column_index) => {
                                             return <td key={column_index.toString()}
                                                        className="px-5 py-5 border-b border-gray-200 text-sm">

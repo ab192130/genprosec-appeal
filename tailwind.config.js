@@ -6,9 +6,12 @@ module.exports = {
   },
   variants: {
     extend: {
-      backgroundColor: ['active'],
+      backgroundColor: ['active', 'checked'],
       boxShadow: ['active'],
-      scale: ['active']
+      scale: ['active'],
+      borderColor: ["checked"],
+      inset: ["checked"],
+      zIndex: ["hover", "active"],
     },
   },
   plugins: [],
