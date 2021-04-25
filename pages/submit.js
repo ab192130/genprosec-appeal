@@ -6,16 +6,18 @@ import axios from 'axios';
 
 const Submit = () => {
     const [submitting, setSubmitting] = useState(false);
+    const [payload, setPayload] = useState({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+    });
 
     const submit = async () => {
         setSubmitting(true);
 
         try {
-            const res = await axios.post('https://60851effd14a870017577685.mockapi.io/api/v1/appeals', {
-                first_name: 'hey',
-                last_name: 'alooo'
-            });
-
+            const res = await axios.post('https://60851effd14a870017577685.mockapi.io/api/v1/appeals', payload);
             console.log(res);
         } catch (e) {
             console.log(e);
@@ -32,16 +34,20 @@ const Submit = () => {
 
             <div className="grid sm:grid-cols-2 grid-cols-1 gap-10 mb-10">
                 <div className="">
-                    <Textfield label="Ad" placeholder="Məs, Kənan" name="first_name"/>
+                    <Textfield label="Ad" placeholder="Məs, Kənan" name="first_name"
+                               value={payload.first_name} onChange={val => payload.first_name = val}/>
                 </div>
                 <div className="">
-                    <Textfield label="Soyad" placeholder="Məs, Məmmədov" name="last_name"/>
+                    <Textfield label="Soyad" placeholder="Məs, Məmmədov" name="last_name"
+                               value={payload.last_name} onChange={val => payload.last_name = val}/>
                 </div>
                 <div className="">
-                    <Textfield label="E-poçt" placeholder="Məs, kenan@mammadov.com" name="last_name"/>
+                    <Textfield label="E-poçt" placeholder="Məs, kenan@mammadov.com" name="last_name"
+                               value={payload.phone} onChange={val => payload.phone = val}/>
                 </div>
                 <div className="">
-                    <Textfield label="Əlaqə nömrəsi" placeholder="Məs, +994501234567" name="last_name"/>
+                    <Textfield label="Əlaqə nömrəsi" placeholder="Məs, +994501234567" name="last_name"
+                               value={payload.email} onChange={val => payload.email = val}/>
                 </div>
             </div>
 
