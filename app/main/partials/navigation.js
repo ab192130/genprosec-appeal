@@ -30,7 +30,7 @@ const Navigation = () => {
                                         Müraciət
                                     </a>
                                 </Link>
-                                <Link href="/">
+                                <Link href="/contact">
                                     <a className={`${router.pathname === "/contact" ? "text-blue-600 hover:text-blue-700" : 'text-gray-400 hover:text-gray-800'} uppercase transition active:text-black dark:text-white dark:hover:text-white px-3 py-2 rounded-md text-md font-bold`}>
                                         Əlaqə
                                     </a>
@@ -91,7 +91,7 @@ const Navigation = () => {
                     </Link>
                     <Link
                         className="uppercase text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                        href="/">
+                        href="/contact">
                         Əlaqə
                     </Link>
                 </div>
