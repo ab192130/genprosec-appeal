@@ -1,33 +1,58 @@
 import DashboardLayout from "../../layouts/dashboard";
-import Card from "../../app/system/ui/card";
+import RecentTile from "../../app/system/components/recent-tile";
+import TopTypesTile from "../../app/system/components/top-types-tile";
 
 const Dashboard = () => {
+    const schema = {
+        full_name: {
+            label: 'Adı, Soyadı',
+            type: 'string',
+            avatar: 'avatar',
+            primary: true
+        },
+        type: {
+            label: 'Növ',
+            type: 'string',
+        },
+        email: {
+            label: 'E-poçt',
+            type: 'string',
+        },
+        phone: {
+            label: 'Telefon',
+            type: 'string',
+        },
+        created_at: {
+            label: 'Göndərilib',
+            type: 'string',
+            format: 'date',
+        },
+    };
+
     return (
         <div className="flex flex-col flex-wrap sm:flex-row ">
             <div className="w-full sm:w-1/2 xl:w-1/3">
-                <Card title="Son müraciətlər" subtitle="Göndərilmiş son müraciətlər" icon={
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none"
-                         viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                              d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
-                    </svg>
-                }/>
-                <Card/>
+                <div className=" mx-0 sm:ml-4 xl:mr-4">
+                    <RecentTile title="Müraciətlər" schema={schema} path="https://60851effd14a870017577685.mockapi.io/api/v1/appeals"/>
+                </div>
+                <div className=" mx-0 sm:ml-4 xl:mr-4">
+                    <TopTypesTile title="Müraciətlər" schema={schema} path="https://60851effd14a870017577685.mockapi.io/api/v1/appeals"/>
+                </div>
             </div>
             <div className="w-full sm:w-1/2 xl:w-1/3">
                 <div className=" mx-0 sm:ml-4 xl:mr-4">
-                    {/*<Card/>*/}
+                    <RecentTile title="Müraciətlər" schema={schema} path="https://60851effd14a870017577685.mockapi.io/api/v1/appeals"/>
                 </div>
                 <div className=" mx-0 sm:ml-4 xl:mr-4">
-                    {/*<Card/>*/}
+                    <RecentTile title="Müraciətlər" schema={schema} path="https://60851effd14a870017577685.mockapi.io/api/v1/appeals"/>
                 </div>
             </div>
             <div className="w-full sm:w-1/2 xl:w-1/3">
                 <div className="mb-4">
-                    {/*<Card/>*/}
+                    <TopTypesTile title="Müraciətlər" schema={schema} path="https://60851effd14a870017577685.mockapi.io/api/v1/appeals"/>
                 </div>
                 <div className="mb-4">
-                    {/*<Card/>*/}
+                    <RecentTile title="Müraciətlər" schema={schema} path="https://60851effd14a870017577685.mockapi.io/api/v1/appeals"/>
                 </div>
             </div>
         </div>
