@@ -32,7 +32,7 @@ const About = () => {
 
                 <div className="mb-3 text-center max-w-lg mx-auto text-gray-400">
                     Demonstrasiya üçün inkişaf etdirilmiş, düymələr, kartlar, giriş sahələri, məlumat cədvəlləri və digər
-                    bütün komponentlər layihəyə özəl olaraq hazırlanmışdır.
+                    bütün komponentlər layihəyə özəl olaraq tərtib edilmişdir.
                 </div>
 
                 <div className="sm:flex flex-wrap justify-center items-center text-center gap-8 mb-10">
