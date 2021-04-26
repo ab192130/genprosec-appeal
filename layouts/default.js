@@ -22,30 +22,32 @@ const DefaultLayout = (props) => {
                 <div className="max-w-screen-xl mx-auto px-4">
                     <ul className="max-w-screen-md mx-auto text-lg font-light flex flex-wrap justify-between">
                         <li className="my-2">
-                            <a className="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200"
-                               href="#">
-                                FAQ
-                            </a>
+                            <Link href="/">
+                                <a className="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200">
+                                    Əsas səhifə
+                                </a>
+                            </Link>
                         </li>
                         <li className="my-2">
                             <Link href="/about">
-                                <a className="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200"
-                                   href="#">
+                                <a className="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200">
                                     Haqqımızda
                                 </a>
                             </Link>
                         </li>
                         <li className="my-2">
-                            <a className="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200"
-                               href="#">
-                                Github
-                            </a>
+                            <Link href="/submit">
+                                <a className="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200">
+                                    Müraciət
+                                </a>
+                            </Link>
                         </li>
                         <li className="my-2">
-                            <a className="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200"
-                               href="#">
-                                Əlaqə
-                            </a>
+                            <Link href="/contact">
+                                <a className="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200">
+                                    Bizimlə Əlaqə
+                                </a>
+                            </Link>
                         </li>
                     </ul>
                     <div className="pt-8 flex max-w-xs mx-auto items-center justify-between">
