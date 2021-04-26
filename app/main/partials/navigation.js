@@ -17,7 +17,7 @@ const Navigation = () => {
                                         Əsas səhifə
                                     </a>
                                 </Link>
-                                <Link href="/">
+                                <Link href="/about">
                                     <a className="uppercase text-gray-400 hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium">
                                         Haqqımızda
                                     </a>

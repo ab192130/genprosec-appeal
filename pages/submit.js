@@ -138,8 +138,8 @@ const Submit = () => {
                 {/*Step 2*/}
                 <div className="mt-10">
                     <div className="text-7xl mb-10">
-                        <div className="font-bold mb-5"><span className="text-blue-600">Kim</span>sən?</div>
-                        <div className="text-xl text-gray-400">Özünü təqdim et</div>
+                        <div className="font-bold mb-5"><span className="text-blue-600">Kim</span>siniz?</div>
+                        <div className="text-xl text-gray-400">Özünüzw təqdim edin</div>
                     </div>
 
                     <div className="grid sm:grid-cols-2 grid-cols-1 gap-10 mb-10 p-10">
