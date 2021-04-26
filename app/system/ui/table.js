@@ -10,7 +10,7 @@ import Checkbox from "./checkbox";
 import _ from "lodash";
 import Modal from "./modal";
 
-const Table = ({data, title, schema, path, namespace}) => {
+const Table = ({data, title, schema, path, namespace, creatable}) => {
     const [fetching, setFetching] = useState(false);
     const [deleting, setDeleting] = useState(false);
     const [appeals, setAppeals] = useState(data);
@@ -184,7 +184,7 @@ const Table = ({data, title, schema, path, namespace}) => {
             <div className="flex flex-row mb-1 sm:mb-0 justify-between w-full">
                 <h2 className="text-2xl leading-tight">
                     <div className="flex w-full space-x-3">
-                        <Button theme="primary" icon={
+                        {creatable && <Button theme="primary" link={`/dashboard/${namespace}/create`} icon={
                             <svg xmlns="http://www.w3.org/2000/svg" className="" fill="none"
                                  viewBox="0 0 24 24"
                                  stroke="currentColor">
@@ -193,7 +193,7 @@ const Table = ({data, title, schema, path, namespace}) => {
                             </svg>
                         }>
                             Yeni
-                        </Button>
+                        </Button>}
                         <Button onClick={fetch} loading={fetching} icon={
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
@@ -323,7 +323,8 @@ const Table = ({data, title, schema, path, namespace}) => {
 
 Table.defaultProps = {
     data: [],
-    namespace: 'appeals'
+    namespace: 'appeals',
+    creatable: true
 };
 
 export default Table;
