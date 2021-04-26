@@ -19,4 +19,8 @@ const Button = ({children, onClick, loading}) => {
     );
 };
 
+Button.defaultProps = {
+    onClick: () => {}
+};
+
 export default Button;
