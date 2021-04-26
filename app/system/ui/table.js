@@ -10,7 +10,7 @@ import Checkbox from "./checkbox";
 import _ from "lodash";
 import Modal from "./modal";
 
-const Table = ({data, title, schema, path}) => {
+const Table = ({data, title, schema, path, namespace}) => {
     const [fetching, setFetching] = useState(false);
     const [deleting, setDeleting] = useState(false);
     const [appeals, setAppeals] = useState(data);
@@ -48,7 +48,7 @@ const Table = ({data, title, schema, path}) => {
     const goToItem = (event, item) => {
         event.preventDefault();
 
-        router.push(`appeals/${item.id}`)
+        router.push(`${namespace}/${item.id}`)
     };
 
     function nextPage() {
@@ -105,7 +105,7 @@ const Table = ({data, title, schema, path}) => {
 
         try {
             selectedItems.forEach(selectedItem => {
-                axios.delete(`https://60851effd14a870017577685.mockapi.io/api/v1/appeals/${selectedItem.id}`)
+                axios.delete(`https://60851effd14a870017577685.mockapi.io/api/v1/${namespace}/${selectedItem.id}`)
                     .then(res => {
                         setAppeals(appeals.filter(appeal => {
                             return !_.some(selectedItems, appeal);
@@ -322,7 +322,8 @@ const Table = ({data, title, schema, path}) => {
 };
 
 Table.defaultProps = {
-    data: []
+    data: [],
+    namespace: 'appeals'
 };
 
 export default Table;
