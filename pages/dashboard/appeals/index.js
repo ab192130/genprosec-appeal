@@ -18,10 +18,12 @@ const Appeals = () => {
         email: {
             label: 'E-poçt',
             type: 'string',
+            format: 'email',
         },
         phone: {
             label: 'Telefon',
             type: 'string',
+            format: 'phone',
         },
         created_at: {
             label: 'Göndərilib',
