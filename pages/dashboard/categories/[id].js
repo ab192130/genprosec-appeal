@@ -10,6 +10,7 @@ import Textarea from "../../../app/system/ui/textarea";
 import Modal from "../../../app/system/ui/modal";
 import {motion} from "framer-motion";
 import Textfield from "../../../app/system/ui/textfield";
+import Moment from "react-moment";
 
 const User = ({id}) => {
     const [fetching, setFetching] = useState(false);
@@ -146,13 +147,11 @@ const User = ({id}) => {
                         <div className="space-y-2">
                             <div className="flex flex-wrap justify-between group cursor-pointer">
                                 <div className="text-gray-400">Yaradılıb</div>
-                                <div
-                                    className="text-gray-400 group-hover:text-gray-600 transition">{item.created_at}</div>
-                            </div>
-                            <div className="flex flex-wrap justify-between group cursor-pointer ">
-                                <div className="text-gray-400">Son yenilənmə</div>
-                                <div
-                                    className="text-gray-400 group-hover:text-gray-600 transition">{item.created_at}</div>
+                                <div className="text-gray-400 group-hover:text-gray-600 transition">
+                                    <Moment format="LL" locale="az">
+                                        {item.created_at}
+                                    </Moment>
+                                </div>
                             </div>
                         </div>
                     </Card>

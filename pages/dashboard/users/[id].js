@@ -10,6 +10,7 @@ import Textarea from "../../../app/system/ui/textarea";
 import Modal from "../../../app/system/ui/modal";
 import {motion} from "framer-motion";
 import Textfield from "../../../app/system/ui/textfield";
+import Moment from "react-moment";
 
 const User = ({id}) => {
     const [fetching, setFetching] = useState(false);
@@ -96,11 +97,17 @@ const User = ({id}) => {
                         <form className="">
                             <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
                                 <Textfield label="İstifadəçi adı" name="username" placeholder="İstifadəçi adı"
-                                           value={item.username} onChange={val => {setItem({...item, username: val})}}/>
+                                           value={item.username} onChange={val => {
+                                    setItem({...item, username: val})
+                                }}/>
                                 <Textfield label="E-poçt" name="email" placeholder="E-poçt ünvanı"
-                                           value={item.email} onChange={val => {setItem({...item, email: val})}}/>
+                                           value={item.email} onChange={val => {
+                                    setItem({...item, email: val})
+                                }}/>
                                 <Textfield label="Şifrə" name="password" placeholder="Şifrə" type="password"
-                                           value={item.password} onChange={val => {setItem({...item, password: val})}}/>
+                                           value={item.password} onChange={val => {
+                                    setItem({...item, password: val})
+                                }}/>
                             </div>
                         </form>
                     </Card>
@@ -147,13 +154,11 @@ const User = ({id}) => {
                         <div className="space-y-2">
                             <div className="flex flex-wrap justify-between group cursor-pointer">
                                 <div className="text-gray-400">Yaradılıb</div>
-                                <div
-                                    className="text-gray-400 group-hover:text-gray-600 transition">{item.created_at}</div>
-                            </div>
-                            <div className="flex flex-wrap justify-between group cursor-pointer ">
-                                <div className="text-gray-400">Son yenilənmə</div>
-                                <div
-                                    className="text-gray-400 group-hover:text-gray-600 transition">{item.created_at}</div>
+                                <div className="text-gray-400 group-hover:text-gray-600 transition">
+                                    <Moment format="LL" locale="az">
+                                        {item.created_at}
+                                    </Moment>
+                                </div>
                             </div>
                         </div>
                     </Card>
