@@ -92,7 +92,7 @@ const DefaultLayout = (props) => {
                     </div>
                     <div
                         className="text-center text-gray-500 dark:text-gray-200 pt-10 sm:pt-12 font-light flex items-center justify-center">
-                        Made by <span className="font-bold ml-2">Burhan Aghazada</span>
+                        Made by <span className="font-bold ml-2 cursor-pointer text-gray-500 hover:text-gray-800 transition">Burhan Aghazada</span>
                     </div>
                 </div>
             </footer>
