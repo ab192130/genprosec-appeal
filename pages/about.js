@@ -30,6 +30,11 @@ const About = () => {
                     Layihədə İstifadə edilmiş texnologiyalar
                 </div>
 
+                <div className="mb-3 text-center max-w-lg mx-auto text-gray-400">
+                    Demonstrasiya üçün inkişaf etdirilmiş, düymələr, kartlar, giriş sahələri, məlumat cədvəlləri və digər
+                    bütün komponentlər layihəyə özəl olaraq hazırlanmışdır.
+                </div>
+
                 <div className="sm:flex flex-wrap justify-center items-center text-center gap-8 mb-10">
                     <div
                         className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-6 py-4 bg-white mt-6 shadow-lg rounded-3xl dark:bg-gray-800">
