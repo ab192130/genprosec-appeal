@@ -91,11 +91,11 @@ const About = () => {
                             </div>
                         </div>
                         <h3 className="text-2xl sm:text-xl text-gray-700 font-semibold dark:text-white py-4">
-                            Adobe Illustrator
+                            Mock API
                         </h3>
                         <p className="text-md  text-gray-500 dark:text-gray-300 py-4">
-                            Adobe Systems şirkəti tərəfindən hazılanmış və inkişaf etdirilməkdə olan vektor qrafik
-                            redaktoru.
+                            Kompüterin əməliyyat sistemi vasitəsilə həyata keçirilən aşağı dərəcəli servis
+                            funksiyalarını tələb edən və yerinə yetirən proqramlar toplusu
                         </p>
                     </div>
                 </div>
