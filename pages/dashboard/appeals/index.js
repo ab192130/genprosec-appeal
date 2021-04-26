@@ -1,5 +1,6 @@
 import DashboardLayout from "../../../layouts/dashboard";
 import Table from '../../../app/system/ui/table';
+import { motion } from "framer-motion";
 
 const Appeals = () => {
 
@@ -30,9 +31,11 @@ const Appeals = () => {
     };
 
     return (
-        <div>
-           <Table title="Müraciətlər" schema={schema} path="https://60851effd14a870017577685.mockapi.io/api/v1/appeals"/>
-        </div>
+        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+            <div>
+                <Table title="Müraciətlər" schema={schema} path="https://60851effd14a870017577685.mockapi.io/api/v1/appeals"/>
+            </div>
+        </motion.div>
     );
 };
 
