@@ -23,7 +23,7 @@ const Login = () => {
 
     return (
         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
-            <form className="max-w-sm p-10 m-auto bg-white bg-opacity-25 rounded-3xl shadow-2xl">
+            <form className="max-w-sm p-10 m-auto bg-white bg-opacity-25 rounded-3xl shadow-2xl hover:shadow-xl transition duration-300">
                 <div className="w-full pt-1 text-center -mt-20 mb-5 mx-auto">
                     <a href="#"
                        className="flex items-center justify-center bg-gray-50 border border-gray-100 block relative mx-auto text-gray-400 object-cover rounded-full h-20 w-20">
