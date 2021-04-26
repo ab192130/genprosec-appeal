@@ -7,11 +7,11 @@ const Navigation = () => {
             <div className="px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
-                        <a className="flex-shrink-0" href="/">
+                        {/* <a className="flex-shrink-0" href="/">
                             <img className="h-10 w-10" src="/logo.png" alt=""/>
-                        </a>
+                        </a>*/}
                         <div className="hidden md:block">
-                            <div className="ml-10 flex items-baseline space-x-4">
+                            <div className="flex items-baseline space-x-4">
                                 <Link href="/">
                                     <a className="uppercase text-gray-400 hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium">
                                         Əsas səhifə
