@@ -95,7 +95,7 @@ const Submit = () => {
                                     Təklif
                                 </p>
                                 <p className="text-gray-400 text-xs">
-                                    Bir məsələ ilə bağlı şikayətim var.
+                                    Diqqətinizi çəkə biləcək bir fikrim var.
                                 </p>
                             </div>
                         </div>
@@ -111,7 +111,7 @@ const Submit = () => {
                                     Ərizə
                                 </p>
                                 <p className="text-gray-400 text-xs">
-                                    Bir məsələ ilə bağlı şikayətim var.
+                                    Təqdim etmək istədiyim bir ərizə var.
                                 </p>
                             </div>
                         </div>
@@ -127,7 +127,7 @@ const Submit = () => {
                                     Videoqəbul
                                 </p>
                                 <p className="text-gray-400 text-xs">
-                                    Bir məsələ ilə bağlı şikayətim var.
+                                    Video görüş tələb etmək istəyirəm.
                                 </p>
                             </div>
                         </div>
