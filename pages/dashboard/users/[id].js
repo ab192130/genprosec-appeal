@@ -8,12 +8,13 @@ import axios from 'axios';
 import Loading from "../../../app/system/ui/loading";
 import Textarea from "../../../app/system/ui/textarea";
 import Modal from "../../../app/system/ui/modal";
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import Textfield from "../../../app/system/ui/textfield";
 
 const User = ({id}) => {
     const [fetching, setFetching] = useState(false);
     const [deleting, setDeleting] = useState(false);
+    const [saving, setSaving] = useState(false);
     const [item, setItem] = useState(null);
     const [deleteDialogActive, setDeleteDialogActive] = useState(false);
     const router = useRouter();
@@ -45,6 +46,18 @@ const User = ({id}) => {
         setDeleting(false);
     }
 
+    async function saveItem() {
+        setSaving(true);
+
+        try {
+            const res = await axios.put(`https://60851effd14a870017577685.mockapi.io/api/v1/users/${id}`, item);
+        } catch (e) {
+            console.error(e);
+        }
+
+        setSaving(false);
+    }
+
     useEffect(() => {
         fetch(id);
     }, []);
@@ -66,7 +79,8 @@ const User = ({id}) => {
                        color="red"
                        onPositive={deleteItem}
                        title="Əminsiniz?" icon={
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24"
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-600" fill="none"
+                         viewBox="0 0 24 24"
                          stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                               d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
@@ -82,11 +96,11 @@ const User = ({id}) => {
                         <form className="">
                             <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
                                 <Textfield label="İstifadəçi adı" name="username" placeholder="İstifadəçi adı"
-                                value={item.username}/>
+                                           value={item.username} onChange={val => {setItem({...item, username: val})}}/>
                                 <Textfield label="E-poçt" name="email" placeholder="E-poçt ünvanı"
-                                value={item.email}/>
+                                           value={item.email} onChange={val => {setItem({...item, email: val})}}/>
                                 <Textfield label="Şifrə" name="password" placeholder="Şifrə" type="password"
-                                value={item.password}/>
+                                           value={item.password} onChange={val => {setItem({...item, password: val})}}/>
                             </div>
                         </form>
                     </Card>
@@ -112,7 +126,7 @@ const User = ({id}) => {
                                 }>
                                     Sil
                                 </Button>
-                                <Button disabled icon={
+                                <Button theme="primary" onClick={saveItem} loading={saving} icon={
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
                                          viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -133,11 +147,13 @@ const User = ({id}) => {
                         <div className="space-y-2">
                             <div className="flex flex-wrap justify-between group cursor-pointer">
                                 <div className="text-gray-400">Yaradılıb</div>
-                                <div className="text-gray-400 group-hover:text-gray-600 transition">{item.created_at}</div>
+                                <div
+                                    className="text-gray-400 group-hover:text-gray-600 transition">{item.created_at}</div>
                             </div>
                             <div className="flex flex-wrap justify-between group cursor-pointer ">
                                 <div className="text-gray-400">Son yenilənmə</div>
-                                <div className="text-gray-400 group-hover:text-gray-600 transition">{item.created_at}</div>
+                                <div
+                                    className="text-gray-400 group-hover:text-gray-600 transition">{item.created_at}</div>
                             </div>
                         </div>
                     </Card>
