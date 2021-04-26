@@ -10,6 +10,7 @@ const Loading = ({size, color}) => {
         else if (size === 'md') {dimensions = {width: 40, height: 40}}
         else if (size === 'lg') {dimensions = {width: 50, height: 50}}
         else if (size === 'xl') {dimensions = {width: 60, height: 60}}
+        else if (size === '2xl') {dimensions = {width: 70, height: 70}}
     };
 
     makeSize();

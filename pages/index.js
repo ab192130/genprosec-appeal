@@ -3,7 +3,7 @@ import Button from "../app/main/ui/button";
 
 export default function Home() {
     return (
-        <div className="max-w-7xl mx-auto bg-white dark:bg-gray-800 overflow-hidden relative">
+        <div className="bg-white dark:bg-gray-800 overflow-hidden relative">
             <div className="text-start w-1/2 py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
                 <h2 className="text-5xl font-extrabold text-black dark:text-white sm:text-5xl mb-10">
                     <span className="block">
