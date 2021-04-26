@@ -57,7 +57,7 @@ const Submit = () => {
     }
 
     return (
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto p-10">
             <SwipeableViews index={index}>
                 {/*Step 1*/}
                 <div className="mt-10">

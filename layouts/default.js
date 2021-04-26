@@ -13,10 +13,9 @@ const DefaultLayout = (props) => {
                 <Navigation/>
             </header>
 
-            <main className="flex flex-col items-center justify-center flex-1 px-20 max-w-7xl mx-auto">
+            <main className="flex flex-col items-center justify-center flex-1 max-w-7xl mx-auto">
                 {props.children}
             </main>
-
 
             <footer className="bg-white dark:bg-gray-800 w-full py-8">
                 <div className="max-w-screen-xl mx-auto px-4">
