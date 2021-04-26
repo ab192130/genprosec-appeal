@@ -41,7 +41,7 @@ const Navigation = () => {
                     <div className="hidden md:block">
                         <div className="md:block -mr-2 flex">
                             <form className="flex w-full max-w-sm space-x-3">
-                                <Button>
+                                <Button link="/submit">
                                     Yeni müraciət
                                 </Button>
                             </form>

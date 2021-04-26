@@ -1,6 +1,18 @@
-const Button = ({children, onClick, loading}) => {
+import {useRouter} from "next/router";
+
+const Button = ({children, onClick, loading, link}) => {
+    const router = useRouter();
+
+    function onTrigger(e) {
+        if (link)
+            router.push(link);
+        else {
+            onClick(e);
+        }
+    }
+
     return (
-        <button type="button" onClick={onClick}
+        <button type="button" onClick={onTrigger}
                 className="scale-95 py-4 px-6 bg-blue-600 hover:bg-blue-700
                 text-white transition ease-in active:bg-blue-500 duration-200
                 text-center text-base font-semibold shadow-lg active:shadow-xl
@@ -20,7 +32,8 @@ const Button = ({children, onClick, loading}) => {
 };
 
 Button.defaultProps = {
-    onClick: () => {}
+    onClick: () => {},
+    link: null
 };
 
 export default Button;
