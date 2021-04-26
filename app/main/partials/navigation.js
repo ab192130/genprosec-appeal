@@ -1,7 +1,10 @@
 import Button from "../ui/button";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navigation = () => {
+    const router = useRouter();
+
     return (
         <nav className="max-w-7xl mx-auto bg-white rounded-b-3xl dark:bg-gray-800 shadow-sm py-4 ">
             <div className="px-8">
@@ -13,22 +16,22 @@ const Navigation = () => {
                         <div className="hidden md:block">
                             <div className="flex items-baseline space-x-4">
                                 <Link href="/">
-                                    <a className="uppercase text-gray-400 hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium">
+                                    <a className={`${router.pathname === "/" ? "text-blue-600 hover:text-blue-700" : 'text-gray-400 hover:text-gray-800'} uppercase transition active:text-black dark:text-white dark:hover:text-white px-3 py-2 rounded-md text-md font-bold`}>
                                         Əsas səhifə
                                     </a>
                                 </Link>
                                 <Link href="/about">
-                                    <a className="uppercase text-gray-400 hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium">
+                                    <a className={`${router.pathname === "/about" ? "text-blue-600 hover:text-blue-700" : 'text-gray-400 hover:text-gray-800'} uppercase transition active:text-black dark:text-white dark:hover:text-white px-3 py-2 rounded-md text-md font-bold`}>
                                         Haqqımızda
                                     </a>
                                 </Link>
                                 <Link href="/submit">
-                                    <a className="uppercase text-blue-600 dark:text-white hover:text-blue-700 dark:hover:text-white px-3 py-2 rounded-md text-md font-bold">
+                                    <a className={`${router.pathname === "/submit" ? "text-blue-600 hover:text-blue-700" : 'text-gray-400 hover:text-gray-800'} uppercase transition active:text-black dark:text-white dark:hover:text-white px-3 py-2 rounded-md text-md font-bold`}>
                                         Müraciət
                                     </a>
                                 </Link>
                                 <Link href="/">
-                                    <a className="uppercase text-gray-400 hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium">
+                                    <a className={`${router.pathname === "/contact" ? "text-blue-600 hover:text-blue-700" : 'text-gray-400 hover:text-gray-800'} uppercase transition active:text-black dark:text-white dark:hover:text-white px-3 py-2 rounded-md text-md font-bold`}>
                                         Əlaqə
                                     </a>
                                 </Link>

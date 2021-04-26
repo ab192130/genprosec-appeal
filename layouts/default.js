@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navigation from "../app/main/partials/navigation";
+import Link from "next/link";
 
 const DefaultLayout = (props) => {
     return (
@@ -27,10 +28,12 @@ const DefaultLayout = (props) => {
                             </a>
                         </li>
                         <li className="my-2">
-                            <a className="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200"
-                               href="#">
-                                Haqqımızda
-                            </a>
+                            <Link href="/about">
+                                <a className="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200"
+                                   href="#">
+                                    Haqqımızda
+                                </a>
+                            </Link>
                         </li>
                         <li className="my-2">
                             <a className="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200"
