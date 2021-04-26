@@ -59,7 +59,7 @@ const Submit = () => {
 
     return (
         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
-            <div className="max-w-7xl mx-auto p-10">
+            <div className="max-w-7xl mx-auto px-10">
                 <SwipeableViews index={index}>
                     {/*Step 1*/}
                     <div className="mt-10">

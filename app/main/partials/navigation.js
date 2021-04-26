@@ -40,7 +40,18 @@ const Navigation = () => {
                     </div>
                     <div className="hidden md:block">
                         <div className="md:block -mr-2 flex">
-                            <form className="flex w-full max-w-sm space-x-3">
+                            <form className="flex w-full items-center max-w-sm space-x-5">
+                                <Link href="/login">
+                                    <a className={`flex flex-wrap items-center text-gray-300 hover:text-gray-800 uppercase transition active:text-black dark:text-white dark:hover:text-white px-3 py-2 rounded-md text-md font-bold`}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-1" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                                  d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+                                        </svg>
+
+                                        Giriş
+                                    </a>
+                                </Link>
                                 <Button link="/submit">
                                     Yeni müraciət
                                 </Button>
