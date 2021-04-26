@@ -93,7 +93,7 @@ const Appeal = ({id}) => {
                                     Müraciətin növü
                                 </dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    {item.category}
+                                    {item.type}
                                 </dd>
                             </div>
                             <div
@@ -120,9 +120,7 @@ const Appeal = ({id}) => {
                                     Təsvir
                                 </dt>
                                 <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas interdum ex eu
-                                    blandit laoreet. Sed ullamcorper diam eget dictum molestie. Maecenas placerat
-                                    elementum quam vel vestibulum.
+                                    {item.description}
                                 </dd>
                             </div>
                         </dl>

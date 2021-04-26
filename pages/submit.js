@@ -13,6 +13,7 @@ const Submit = () => {
         email: '',
         phone: '',
         address: '',
+        type: '',
         description: '',
     };
 
@@ -26,6 +27,7 @@ const Submit = () => {
             email: '',
             phone: '',
             address: '',
+            type: '',
             description: '',
         });
     };
@@ -48,7 +50,9 @@ const Submit = () => {
         setSubmitting(false);
     };
 
-    function onSelectType(index) {
+    function onSelectType(name) {
+        setPayload({...payload, type: name});
+
         setIndex(1);
     }
 
@@ -65,10 +69,10 @@ const Submit = () => {
                     <div className="grid sm:grid-cols-6 grid-cols-1 gap-4 p-10">
                         <div onClick={e => {
                             e.preventDefault();
-                            onSelectType(0)
+                            onSelectType('Şikayət')
                         }}
                              className="shadow-xl hover:shadow-lg hover:bg-gray-50 transition rounded-2xl w-72 p-10 bg-white relative overflow-hidden cursor-pointer">
-                            <img alt="moto" src="https://www.tailwind-kit.com/images/object/1.png"
+                            <img alt="moto" src="/logo_lg.jpg"
                                  className="absolute -right-20 -bottom-8 h-40 w-50 mb-4"/>
                             <div className="w-4/6">
                                 <p className="text-gray-800 text-lg font-medium mb-2 uppercase">
@@ -81,10 +85,10 @@ const Submit = () => {
                         </div>
                         <div onClick={e => {
                             e.preventDefault();
-                            onSelectType(0)
+                            onSelectType('Təklif')
                         }}
                              className="shadow-xl hover:shadow-lg hover:bg-gray-50 transition rounded-2xl w-72 p-10 bg-white relative overflow-hidden cursor-pointer">
-                            <img alt="moto" src="https://www.tailwind-kit.com/images/object/1.png"
+                            <img alt="moto" src="/logo_lg.jpg"
                                  className="absolute -right-20 -bottom-8 h-40 w-50 mb-4"/>
                             <div className="w-4/6">
                                 <p className="text-gray-800 text-lg font-medium mb-2 uppercase">
@@ -97,10 +101,10 @@ const Submit = () => {
                         </div>
                         <div onClick={e => {
                             e.preventDefault();
-                            onSelectType(0)
+                            onSelectType('Ərizə')
                         }}
                              className="shadow-xl hover:shadow-lg hover:bg-gray-50 transition rounded-2xl w-72 p-10 bg-white relative overflow-hidden cursor-pointer">
-                            <img alt="moto" src="https://www.tailwind-kit.com/images/object/1.png"
+                            <img alt="moto" src="/logo_lg.jpg"
                                  className="absolute -right-20 -bottom-8 h-40 w-50 mb-4"/>
                             <div className="w-4/6">
                                 <p className="text-gray-800 text-lg font-medium mb-2 uppercase">
@@ -113,10 +117,10 @@ const Submit = () => {
                         </div>
                         <div onClick={e => {
                             e.preventDefault();
-                            onSelectType(0)
+                            onSelectType('Videoqəbul')
                         }}
                              className="shadow-xl hover:shadow-lg hover:bg-gray-50 transition rounded-2xl w-72 p-10 bg-white relative overflow-hidden cursor-pointer">
-                            <img alt="moto" src="https://www.tailwind-kit.com/images/object/1.png"
+                            <img alt="moto" src="/logo_lg.jpg"
                                  className="absolute -right-20 -bottom-8 h-40 w-50 mb-4"/>
                             <div className="w-4/6">
                                 <p className="text-gray-800 text-lg font-medium mb-2 uppercase">
@@ -233,7 +237,7 @@ const Submit = () => {
                     <div className="">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-40 w-40 text-blue-600" fill="none" viewBox="0 0 24 24"
                              stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                   d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
                         </svg>
                     </div>
@@ -241,10 +245,6 @@ const Submit = () => {
                     <div className="text-3xl text-gray-400">Məktubunuzu aldıq. Qatqılarınız üçün minnətdarıq.</div>
                 </div>
             </SwipeableViews>
-
-            <button type="button" onClick={() => setIndex(0)}>0</button>
-            <button type="button" onClick={() => setIndex(1)}>1</button>
-            <button type="button" onClick={() => setIndex(2)}>2</button>
         </div>
     );
 };

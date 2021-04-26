@@ -10,7 +10,7 @@ const Appeals = () => {
             avatar: 'avatar',
             primary: true
         },
-        category: {
+        type: {
             label: 'Növ',
             type: 'string',
         },
