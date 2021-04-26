@@ -14,6 +14,7 @@ const Appeals = () => {
         email: {
             label: 'E-poçt',
             type: 'string',
+            format: 'email',
         },
         created_at: {
             label: 'Qeydiyyat tarixi',
